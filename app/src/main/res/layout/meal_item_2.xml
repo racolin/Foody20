@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingHorizontal="5dp"
+    android:paddingVertical="8dp">
+    <androidx.cardview.widget.CardView
+        android:layout_alignParentTop="true"
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="5dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            android:id="@+id/iv_meal"
+            android:src="@drawable/meal_image"
+            android:clipToOutline="true"
+            android:scaleType="centerCrop"
+            />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+            android:layout_margin="4dp">
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/ic_saved_fill"
+                android:backgroundTint="@color/primary_400"
+                />
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:layout_marginBottom="2dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+    <TextView
+        android:layout_below="@id/card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Canh cá Quỳnh Côi"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:id="@+id/tv_title"
+        />
+    <TextView
+        android:layout_below="@id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Món ăn gốc luôn ghi dấu bởi..."
+        android:textSize="10sp"
+        android:id="@+id/tv_description"
+        />
+
+    <TextView
+        android:id="@+id/tv_distant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_alignParentRight="true"
+        android:text="2.3km"
+        android:textColor="@color/secondary_800"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+</RelativeLayout>

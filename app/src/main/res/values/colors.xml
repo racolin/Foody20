@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="text_light_full">#FFFFFF</color>
+    <color name="text_light_half">#CDCDCD</color>
+    <color name="text_dark_full">#1B1B1B</color>
+    <color name="text_dark_half">#252525</color>
+
+    <color name="facebook">#0843DB</color>
+    <color name="google">#DE4646</color>
+
+    <color name="error">#B00020</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="gray">#EBEBEB</color>
+
+    <color name="purple_50">#F3E5F5</color>
+    <color name="purple_100">#E1BEE7</color>
+    <color name="purple_200">#CE93D8</color>
+    <color name="purple_300">#BA68C8</color>
+    <color name="purple_400">#AB47BC</color>
+    <color name="purple_500">#9C27B0</color>
+    <color name="purple_600">#8E24AA</color>
+    <color name="purple_700">#7B1FA2</color>
+    <color name="purple_800">#6A1B9A</color>
+    <color name="purple_900">#4A148C</color>
+    <color name="purple_A100">#EA80FC</color>
+    <color name="purple_A200">#E040FB</color>
+    <color name="purple_A400">#D500F9</color>
+    <color name="purple_A700">#AA00FF</color>
+
+    <color name="primary_50">#FBE9E7</color>
+    <color name="primary_100">#FFCCBC</color>
+    <color name="primary_200">#FFAB91</color>
+    <color name="primary_300">#FF8A65</color>
+    <color name="primary_400">#FF7043</color>
+    <color name="primary_500">#FF5722</color>
+    <color name="primary_600">#F4511E</color>
+    <color name="primary_700">#E64A19</color>
+    <color name="primary_800">#D84315</color>
+    <color name="primary_900">#BF360C</color>
+    <color name="primary_A100">#FF9E80</color>
+    <color name="primary_A200">#FF6E40</color>
+    <color name="primary_A400">#FF3D00</color>
+    <color name="primary_A700">#DD2C00</color>
+
+
+    <color name="secondary_50">#F1F8E9</color>
+    <color name="secondary_100">#DCEDC8</color>
+    <color name="secondary_200">#C5E1A5</color>
+    <color name="secondary_300">#AED581</color>
+    <color name="secondary_400">#9CCC65</color>
+    <color name="secondary_500">#8BC34A</color>
+    <color name="secondary_600">#7CB342</color>
+    <color name="secondary_700">#689F38</color>
+    <color name="secondary_800">#558B2F</color>
+    <color name="secondary_900">#33691E</color>
+    <color name="secondary_A100">#CCFF90</color>
+    <color name="secondary_A200">#B2FF59</color>
+    <color name="secondary_A400">#76FF03</color>
+    <color name="secondary_A700">#64DD17</color>
+
+</resources>

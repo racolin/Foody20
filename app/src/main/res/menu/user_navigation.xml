@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nv_log_in" android:icon="@drawable/ic_user_fill"
+        android:title="Đăng nhập"/>
+    <item android:id="@+id/nv_info" android:icon="@drawable/ic_information_fill"
+        android:title="Thông tin tài khoản"/>
+    <item android:id="@+id/nv_share" android:icon="@drawable/ic_share"
+        android:title="Mời bạn bè"/>
+    <item android:id="@+id/nv_rule" android:icon="@drawable/ic_policy_fill"
+        android:title="Chính sách quy định"/>
+    <item android:id="@+id/nv_log_out" android:icon="@drawable/ic_log_out"
+        android:title="Đăng xuất"/>
+    <group>
+        <item android:title="Danh mục" android:id="@+id/nv_categories">
+            <menu>
+                <item android:id="@+id/nv_home" android:icon="@drawable/ic_home_fill"
+                    android:title="Trang chủ"/>
+                <item android:id="@+id/nv_notification" android:icon="@drawable/ic_notification_fill"
+                    android:title="Thông báo"/>
+                <item android:id="@+id/nv_saved" android:icon="@drawable/ic_saved_fill"
+                    android:title="Đã lưu"/>
+                <item android:id="@+id/nv_cart" android:icon="@drawable/ic_cart_fill"
+                    android:title="Giỏ hàng"/>
+                <item android:id="@+id/nv_order" android:icon="@drawable/ic_order_fill"
+                    android:title="Đơn hàng"/>
+            </menu>
+        </item>
+    </group>
+</menu>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="8dp"
+    android:backgroundTint="@color/gray"
+    android:background="@drawable/stroke">
+
+    <RelativeLayout
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rating="5"
+            android:progressTint="@color/primary_700"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:id="@+id/rb_rating"
+            android:layout_marginEnd="16dp"
+            android:layout_alignParentRight="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngon tuyệt!"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/rb_rating"
+            android:id="@+id/tv_feel"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="100dp">
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/user_avatar"/>
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:layout_marginStart="4dp"
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/card"
+            android:text="Phan Trung Tín"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <ImageView
+            android:layout_marginStart="4dp"
+            android:layout_below="@id/tv_name"
+            android:layout_toRightOf="@id/card"
+            android:layout_marginTop="2dp"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:id="@+id/iv_schedule"
+            android:src="@drawable/ic_schedule"/>
+        <TextView
+            android:layout_below="@id/tv_name"
+            android:layout_toRightOf="@id/iv_schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_time"
+            android:textSize="12sp"
+            android:text="11:23 10/04/2022"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_height="1dp"
+        android:backgroundTint="@color/text_dark_half"
+        android:layout_width="match_parent"
+        android:background="@color/black"/>
+
+    <TextView
+        android:layout_marginHorizontal="8dp"
+        android:id="@+id/tv_comment_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:paddingVertical="4dp"
+        android:text="Món ăn ngon tuyệt vời!"/>
+</LinearLayout>

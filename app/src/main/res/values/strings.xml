@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Foody_20</string>
+
+    <string name="facebook_app_id">548423553308740</string>
+    <string name="fb_login_protocol_scheme">fb548423553308740</string>
+    <string name="facebook_client_token">3b7dc275d8e5c215b37c62bb52649253</string>
+
+    <string name="login_failed">Đăng nhập thất bại!</string>
+    <string name="login_eror">Đã có lỗi xảy ra!</string>
+
+    <string name="home">Home</string>
+    <string name="notification">Notification</string>
+    <string name="cart">Cart</string>
+    <string name="saved">Saved</string>
+    <string name="order">Order</string>
+    <string name="user">User</string>
+
+    <string name="notification_head">Thông báo</string>
+    <string name="cart_head">Giỏ hàng</string>
+    <string name="saved_head">Đã lưu</string>
+    <string name="order_head">Đơn hàng</string>
+    <string name="user_head">Tài khoản</string>
+
+    <string name="order_wait">Đang đợi</string>
+    <string name="order_delivering">Đang giao</string>
+    <string name="order_delivered">Đã giao</string>
+    <string name="order_shop_cancel">Shop hủy</string>
+    <string name="order_you_cancel">Bạn hủy</string>
+    <string name="order_all">Tất cả</string>
+
+    <string name="date_default">11/05/2001</string>
+
+    <string-array name="genders">
+        <item>Nam</item>
+        <item>Nữ</item>
+        <item>Khác</item>
+    </string-array>
+
+    <string name="transport_title">
+        Hình thức vận chuyển
+    </string>
+    <string name="transport_0">
+        Khi mua hàng tại đây, quý khách có thể lựa chọn một trong các hình thức vận chuyển, giao nhận sau:
+    </string>
+    <string name="transport_1">
+        Trực tiếp vận chuyển và giao hàng tận tay khách hàng.
+    </string>
+    <string name="transport_2">
+        Giao hàng cho khách hàng thông qua các nhà cung cấp dịch vụ chuyển phát.
+    </string>
+
+    <string name="calculate_title">
+        Cách tính tiền
+    </string>
+    <string name="calculate_1">
+        Nếu sử dụng nhà cung cấp dịch vụ chuyển phát thì số tiền vận chuyển sẽ do bạn trả.
+    </string>
+    <string name="calculate_2">
+        Nếu chúng tôi trực tiếp vân chuyển thì đơn giá được tính như sau:
+    </string>
+    <string name="calculate_3">
+        0 -> 2km: Được miễn phí giao hàng.
+    </string>
+    <string name="calculate_4">
+        2 -> 5km: Giá vận chuyển là 10.000đ.
+    </string>
+    <string name="calculate_5">
+        5 -> 10km: Giá vận chuyển là 30.000đ.
+    </string>
+
+    <string name="calculate_6">
+        Lớn hơn 10km: Giá vận chuyển là 30.000đvà tăng 5.000đ với mỗi km sau 10km.
+    </string>
+</resources>
