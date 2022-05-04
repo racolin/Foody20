@@ -13,6 +13,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.firebase.auth.FirebaseAuth;
 
 import hcmute.spkt.group20.foody_20.R;
 import hcmute.spkt.group20.foody_20.state_fragment.SavedStateFragment;
@@ -31,24 +32,30 @@ public class SavedFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_saved, container, false);
-        vp2_home = view.findViewById(R.id.vp2_home);
-        vp2_home.setAdapter(new SavedStateFragment(getActivity()));
-        tl_tab = view.findViewById(R.id.tl_tab);
 
-        new TabLayoutMediator(tl_tab, vp2_home, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                switch (position) {
-                    case 0:
-                        tab.setText("Món ăn");
-                        break;
-                    case 1:
-                        tab.setText("Cửa hàng");
-                        break;
+        View view = null;
+        if (FirebaseAuth.getInstance().getCurrentUser().isAnonymous()) {
+            view = inflater.inflate(R.layout.none_login, container, false);
+        } else {
+            view = inflater.inflate(R.layout.fragment_saved, container, false);
+            vp2_home = view.findViewById(R.id.vp2_home);
+            vp2_home.setAdapter(new SavedStateFragment(getActivity()));
+            tl_tab = view.findViewById(R.id.tl_tab);
+
+            new TabLayoutMediator(tl_tab, vp2_home, new TabLayoutMediator.TabConfigurationStrategy() {
+                @Override
+                public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                    switch (position) {
+                        case 0:
+                            tab.setText(R.string.meal);
+                            break;
+                        case 1:
+                            tab.setText(R.string.shop);
+                            break;
+                    }
                 }
-            }
-        }).attach();
+            }).attach();
+        }
 
         return view;
     }

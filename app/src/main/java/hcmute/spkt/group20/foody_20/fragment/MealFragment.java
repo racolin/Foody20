@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import hcmute.spkt.group20.foody_20.R;
@@ -21,6 +22,10 @@ public class MealFragment extends Fragment {
     List<Meal> meals;
     MealAdapter adapter;
     RecyclerView rv_2_items;
+
+    public MealFragment() {
+        meals = new ArrayList<>();
+    }
 
     public MealFragment(List<Meal> meals) {
         this.meals = meals;

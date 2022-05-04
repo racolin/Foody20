@@ -11,7 +11,7 @@
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chọn loại đơn hàng:"/>
+        android:text="@string/order_type"/>
 
     <GridLayout
         android:layout_width="match_parent"
@@ -23,37 +23,37 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/rd_all"
-            android:text="Tất cả"/>
+            android:text="@string/order_all"/>
         <RadioButton
             android:layout_columnWeight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/rd_wait"
-            android:text="Đang đợi"/>
+            android:text="@string/order_wait"/>
         <RadioButton
             android:layout_columnWeight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/rd_delivering"
-            android:text="Đang giao"/>
+            android:text="@string/order_delivering"/>
         <RadioButton
             android:layout_columnWeight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/rd_delivered"
-            android:text="Đã giao"/>
+            android:text="@string/order_delivered"/>
         <RadioButton
             android:layout_columnWeight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/rd_you_cancel"
-            android:text="Bạn hủy"/>
+            android:text="@string/order_you_cancel"/>
         <RadioButton
             android:layout_columnWeight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/rd_shop_cancel"
-            android:text="Shop hủy"/>
+            android:text="@string/order_shop_cancel"/>
     </GridLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="8dp"

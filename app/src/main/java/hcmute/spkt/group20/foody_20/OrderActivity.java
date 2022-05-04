@@ -20,13 +20,11 @@ public class OrderActivity extends AppCompatActivity {
     }
 
     public void mapping() {
-        mf_order = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mf_order);
-
-
+        mf_order = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fm_order);
         SupportMapFragment mapFragment = SupportMapFragment.newInstance();
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.fm_map, mapFragment)
+                .add(R.id.fm_order, mapFragment)
                 .commit();
     }
 }

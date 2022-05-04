@@ -1,5 +1,9 @@
 package hcmute.spkt.group20.foody_20;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,6 +18,31 @@ import hcmute.spkt.group20.foody_20.model.Shop;
 import hcmute.spkt.group20.foody_20.model.Slider;
 
 public class Support {
+    public static boolean check(String type) {
+        boolean result = false;
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            for (UserInfo info : user.getProviderData()) {
+                result = result || info.getProviderId().equals(type);
+            }
+        }
+        return result;
+    }
+    public static boolean checkGoogle() {
+        return Support.check("google.com");
+    }
+    public static boolean checkFacebook() {
+        return Support.check("facebook.com");
+    }
+    public static boolean checkPhone() {
+        return Support.check("phone");
+    }
+    public static boolean checkLogin() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        return user == null ? false : user.getProviderData().size() > 1;
+    }
+
+
     public static String toCurrency(int value) {
         String input = String.valueOf(value);
         StringBuilder builder = new StringBuilder();
@@ -36,21 +65,21 @@ public class Support {
         meals.add(new Meal("Canh cá Quỳnh Côi",
                 "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_2));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_3));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_4));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_5));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_6));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_7));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_8));
         return meals;
     }
 
@@ -59,88 +88,88 @@ public class Support {
         meals.add(new Meal("Canh cá Quỳnh Côi",
                 "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_6));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_7));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_5));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_10));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_9));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_3));
         return meals;
     }
 
     public static List<Meal> createMeals2() {
         List<Meal> meals = new ArrayList<>();
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_10));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_3));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_5));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_9));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_6));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_4));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_7));
         meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_8));
         return meals;
     }
 
     public static List<Cart> createCarts() {
         List<Cart> carts = new ArrayList<>();
         carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_image));
+        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_10));
+        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_6));
+        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_3));
+        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_8));
+        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_6));
         carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_image));
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_image));
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_image));
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_image));
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_image));
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_image));
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_image));
+        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal));
         return carts;
     }
 
     public static List<Order> createAllOrders() {
         List<Order> orders = new ArrayList<>();
         orders.add(new Order("#21", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang đợi", "", R.drawable.meal_image, "75.000đ", "1"));
+                "Đang đợi", "", R.drawable.meal_10, "75.000đ", "1"));
         orders.add(new Order("#20", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang đợi", "", R.drawable.meal_image, "75.000đ", "1"));
+                "Đang đợi", "", R.drawable.meal_4, "75.000đ", "1"));
         orders.add(new Order("#19", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang đợi", "", R.drawable.meal_image, "75.000đ", "1"));
+                "Đang đợi", "", R.drawable.meal_7, "75.000đ", "1"));
         orders.add(new Order("#18", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang đợi", "", R.drawable.meal_image, "75.000đ", "1"));
+                "Đang đợi", "", R.drawable.meal_8, "75.000đ", "1"));
 
         orders.add(new Order("#14", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang giao", "", R.drawable.meal_image, "75.000đ", "1"));
+                "Đang giao", "", R.drawable.meal_3, "75.000đ", "1"));
         orders.add(new Order("#13", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang giao", "", R.drawable.meal_image, "75.000đ", "1"));
+                "Đang giao", "", R.drawable.meal_10, "75.000đ", "1"));
         orders.add(new Order("#12", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang giao", "", R.drawable.meal_image, "75.000đ", "1"));
+                "Đang giao", "", R.drawable.meal_10, "75.000đ", "1"));
 
         orders.add(new Order("#7", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đã giao", "", R.drawable.meal_image, "75.000đ", "1"));
+                "Đã giao", "", R.drawable.meal_8, "75.000đ", "1"));
         orders.add(new Order("#6", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đã giao", "", R.drawable.meal_image, "75.000đ", "1"));
+                "Đã giao", "", R.drawable.meal_2, "75.000đ", "1"));
         orders.add(new Order("#5", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đã giao", "", R.drawable.meal_image, "75.000đ", "1"));
+                "Đã giao", "", R.drawable.meal_8, "75.000đ", "1"));
         orders.add(new Order("#4", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đã giao", "", R.drawable.meal_image, "75.000đ", "1"));
+                "Đã giao", "", R.drawable.meal_6, "75.000đ", "1"));
 
         orders.add(new Order("#29", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Bạn hủy", "Đặt nhầm", R.drawable.meal_image, "75.000đ", "1"));
+                "Bạn hủy", "Đặt nhầm", R.drawable.meal_4, "75.000đ", "1"));
         orders.add(new Order("#28", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Bạn hủy", "Đặt đặt món khác", R.drawable.meal_image, "75.000đ", "1"));
+                "Bạn hủy", "Đặt đặt món khác", R.drawable.meal_9, "75.000đ", "1"));
 
         orders.add(new Order("#37", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Shop hủy", "Hết nguyên liệu", R.drawable.meal_image, "75.000đ", "1"));
+                "Shop hủy", "Hết nguyên liệu", R.drawable.meal_10, "75.000đ", "1"));
 
         return orders;
     }
@@ -285,27 +314,27 @@ public class Support {
         shops.add(new Shop("Thành Mập 1 ",
                 "Quán cơm sáng trưa tối bình dân.",
                 "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_image));
+                R.drawable.shop_2));
         shops.add(new Shop("Thành Mập 1 ",
                 "Quán cơm sáng trưa tối bình dân.",
                 "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_image));
+                R.drawable.shop_2));
         shops.add(new Shop("Thành Mập 1 ",
                 "Quán cơm sáng trưa tối bình dân.",
                 "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_image));
+                R.drawable.shop_7));
         shops.add(new Shop("Thành Mập 1 ",
                 "Quán cơm sáng trưa tối bình dân.",
                 "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_image));
+                R.drawable.shop_8));
         shops.add(new Shop("Thành Mập 1 ",
                 "Quán cơm sáng trưa tối bình dân.",
                 "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_image));
+                R.drawable.shop_6));
         shops.add(new Shop("Thành Mập 1 ",
                 "Quán cơm sáng trưa tối bình dân.",
                 "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_image));
+                R.drawable.shop_4));
         return shops;
     }
 
@@ -313,14 +342,14 @@ public class Support {
         return new Shop("Thành Mập 1",
                 "Quán cơm sáng trưa tối bình dân.",
                 "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_image);
+                R.drawable.shop_5);
     }
 
     public static Shop getShopChain() {
         return new Shop("Thành Mập",
                 "Quán cơm sáng trưa tối bình dân.",
                 "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_image);
+                R.drawable.shop_7);
     }
 }
 

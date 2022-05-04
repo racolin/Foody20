@@ -9,14 +9,20 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 
 import hcmute.spkt.group20.foody_20.fragment.CartFragment;
 import hcmute.spkt.group20.foody_20.fragment.HomeFragment;
@@ -36,11 +42,27 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (auth.getCurrentUser() != null) {
+        if (auth.getCurrentUser() != null && !auth.getCurrentUser().isAnonymous()) {
             loginUpdateUI();
         } else {
             logoutUpdateUI();
         }
+    }
+
+    private void becomeAnonymous() {
+        auth.signInAnonymously()
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInAnonymously:success");
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInAnonymously:failure", task.getException());
+                        }
+                    }
+                });
     }
 
     @Override
@@ -48,6 +70,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() == null) {
+            becomeAnonymous();
+        }
 
         mapping();
 
@@ -90,12 +115,27 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case R.id.nv_info:
                         dl_user.closeDrawer(GravityCompat.START);
-                        Intent i2 = new Intent(HomeActivity.this, UserInfoActivity.class);
-                        startActivity(i2);
+                        if (Support.checkLogin()) {
+                            Intent i2 = new Intent(HomeActivity.this, UserInfoActivity.class);
+                            startActivity(i2);
+                        } else {
+                            Intent i2 = new Intent(HomeActivity.this, LoginActivity.class);
+                            startActivity(i2);
+                            Toast.makeText(getApplicationContext(), R.string.login_need, Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     case R.id.nv_share:
                         dl_user.closeDrawer(GravityCompat.START);
-                        Toast.makeText(HomeActivity.this, "Share cho bạn bè xem!", Toast.LENGTH_SHORT).show();
+                        if (Support.checkFacebook()) {
+//                            Thực hiện share
+                        } else {
+//                            Gợi ý phải vào facebook để share
+//                            Nếu đã đăng nhập nhưng không có facebook thì cho trang chủ để link
+//                            Nếu chưa đăng nhập thì cho về trang login
+                            Toast.makeText(getApplicationContext(),
+                                    R.string.facebook_login_need,
+                                    Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     case R.id.nv_rule:
                         dl_user.closeDrawer(GravityCompat.START);
@@ -141,13 +181,13 @@ public class HomeActivity extends AppCompatActivity {
     private void login() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
-        loginUpdateUI();
     }
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();
         LoginManager.getInstance().logOut();
-        Toast.makeText(this, "Bạn đã đăng xuất!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.logout_toast, Toast.LENGTH_SHORT).show();
+        becomeAnonymous();
         logoutUpdateUI();
     }
 

@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,11 +44,18 @@ public class OrderFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_order, container, false);
-        mapping(v);
-        rv_orders = v.findViewById(R.id.rv_orders);
-        rv_orders.setAdapter(new OrderAllAdapter(getContext(), allOrder));
-        rv_orders.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        View v = null;
+        if (FirebaseAuth.getInstance().getCurrentUser().isAnonymous()) {
+            v = inflater.inflate(R.layout.none_login, container, false);
+        } else {
+            v = inflater.inflate(R.layout.fragment_order, container, false);
+            mapping(v);
+            rv_orders = v.findViewById(R.id.rv_orders);
+            rv_orders.setAdapter(new OrderAllAdapter(getContext(), allOrder));
+            rv_orders.setLayoutManager(new LinearLayoutManager(getContext()));
+        }
+
         return v;
     }
 
@@ -119,51 +128,50 @@ public class OrderFragment extends Fragment {
     public List<Order> filterWaitOrders(List<Order> orders) {
         List<Order> wait = new ArrayList<>();
         for (Order order : orders) {
-            if (order.getStatus().equals("Đang đợi")) {
+            if (order.getStatus().equals(getString(R.string.order_wait))) {
                 wait.add(new Order(order));
             }
         }
-        Log.d("RR", "" + wait.size());
         return wait;
     }
 
     public List<Order> filterDeliveredOrders(List<Order> orders) {
-        List<Order> wait = new ArrayList<>();
+        List<Order> delivered = new ArrayList<>();
         for (Order order : orders) {
-            if (order.getStatus().equals("Đã giao")) {
-                wait.add(new Order(order));
+            if (order.getStatus().equals(getString(R.string.order_delivered))) {
+                delivered.add(new Order(order));
             }
         }
-        return wait;
+        return delivered;
     }
 
     public List<Order> filterDeliveringOrders(List<Order> orders) {
-        List<Order> wait = new ArrayList<>();
+        List<Order> delivering = new ArrayList<>();
         for (Order order : orders) {
-            if (order.getStatus().equals("Đang giao")) {
-                wait.add(new Order(order));
+            if (order.getStatus().equals(getString(R.string.order_delivering))) {
+                delivering.add(new Order(order));
             }
         }
-        return wait;
+        return delivering;
     }
 
     public List<Order> filterYouCancelOrders(List<Order> orders) {
-        List<Order> wait = new ArrayList<>();
+        List<Order> you_cancel = new ArrayList<>();
         for (Order order : orders) {
-            if (order.getStatus().equals("Bạn hủy")) {
-                wait.add(new Order(order));
+            if (order.getStatus().equals(getString(R.string.order_you_cancel))) {
+                you_cancel.add(new Order(order));
             }
         }
-        return wait;
+        return you_cancel;
     }
 
     public List<Order> filterShopCancelOrders(List<Order> orders) {
-        List<Order> wait = new ArrayList<>();
+        List<Order> shop_cancel = new ArrayList<>();
         for (Order order : orders) {
-            if (order.getStatus().equals("Shop hủy")) {
-                wait.add(new Order(order));
+            if (order.getStatus().equals(getString(R.string.order_shop_cancel))) {
+                shop_cancel.add(new Order(order));
             }
         }
-        return wait;
+        return shop_cancel;
     }
 }

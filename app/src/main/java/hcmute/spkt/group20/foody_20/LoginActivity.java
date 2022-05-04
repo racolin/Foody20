@@ -20,6 +20,10 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.Login;
+import com.facebook.login.LoginBehavior;
+import com.facebook.login.LoginFragment;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -38,16 +42,19 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.Arrays;
+
 public class LoginActivity extends AppCompatActivity {
 
-    LoginButton fb_login;
-    SignInButton gg_login;
+    Button fb_login, gg_login;
     TextView pn_login;
+
     CallbackManager callbackManager;
 
     GoogleSignInClient googleSignInClient;
 
     FirebaseAuth auth;
+
     public static final String TAG = "rrrl";
 
 
@@ -76,11 +83,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         auth = FirebaseAuth.getInstance();
-        if (auth.getCurrentUser() != null) {
-            Log.d(TAG, "already");
-        } else {
-            Log.d(TAG, "aaaa");
-        }
 
         // login google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -105,16 +107,14 @@ public class LoginActivity extends AppCompatActivity {
             AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
             handleCredential(credential);
         } catch (ApiException e) {
-            Toast.makeText(getApplicationContext(), "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.login_failed, Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
 
-
     private void initUI() {
         //  login google
         gg_login = findViewById(R.id.gg_login);
-        gg_login.setSize(SignInButton.SIZE_STANDARD);
         //  login google
         //  login facebook
         fb_login = findViewById(R.id.fb_login);
@@ -126,8 +126,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initListener() {
         //  login facebook
-        fb_login.setPermissions("email", "public_profile");
-        fb_login.registerCallback(callbackManager,
+        LoginManager.getInstance().registerCallback(callbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
@@ -144,9 +143,12 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(FacebookException error) {
-                        Toast.makeText(getApplicationContext(), R.string.login_eror, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.login_error, Toast.LENGTH_SHORT).show();
                     }
                 });
+        fb_login.setOnClickListener(v -> {
+            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "public_profile"));
+        });
         //  login facebook
 
         //  login google
@@ -191,9 +193,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkLogin() {
         FirebaseUser user = auth.getCurrentUser();
-        if (user != null) {
+        if (user != null && !user.isAnonymous()) {
             loginSuccess();
-            return;
         }
     }
 

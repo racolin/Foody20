@@ -40,7 +40,7 @@
                     android:id="@+id/tv_title"
                     />
                 <LinearLayout
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Giá:"
+                        android:text="@string/order_price"
                         android:textSize="14sp"
                         />
                     <TextView
@@ -61,7 +61,7 @@
                         />
                 </LinearLayout>
                 <LinearLayout
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Số lượng:"
+                        android:text="@string/order_amount"
                         android:textSize="14sp"
                         />
                     <TextView
@@ -97,7 +97,7 @@
                     android:layout_columnWeight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thời gian đặt món:"
+                    android:text="@string/time_pick"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     />
@@ -114,7 +114,7 @@
                     android:layout_columnWeight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thời gian đặt món:"
+                    android:text="@string/order_time"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     />
@@ -131,7 +131,7 @@
                     android:layout_columnWeight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Trạng thái:"
+                    android:text="@string/status"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     />

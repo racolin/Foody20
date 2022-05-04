@@ -12,8 +12,40 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/activity_meal.xml" value="0.17028985507246377" />
-        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/activity_order.xml" value="0.17028985507246377" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/activity_order.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/activity_rule.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/activity_shop.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/activity_shop_chain.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/activity_user_info.xml" value="0.259375" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/activity_verify_otpactivity.xml" value="0.264" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/comment_item.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/dialog_contact.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/fragment_cart.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/fragment_home.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/fragment_meals.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/fragment_notification.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/fragment_order.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/fragment_saved.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/fragment_shops.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/gender_layout.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/meal_item_2.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/meal_item_cancel_1.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/meal_item_cart_1.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/meal_item_delivery_1.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/meal_item_order_1.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/meal_item_wait_1.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/no_data_layout.xml" value="0.4" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/none_error.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/none_login.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/none_login_facebook.xml" value="0.12314814814814815" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/none_no_data.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/notification_item_1.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/province_dropdown.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/province_selected.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/shop_item_2.xml" value="0.536" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/slider_item.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/toolbar.xml" value="0.259375" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/layout/user_navigation_header.xml" value="0.259375" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/menu/bottom_navigation.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Foody_202/app/src/main/res/menu/user_navigation.xml" value="0.259375" />
       </map>

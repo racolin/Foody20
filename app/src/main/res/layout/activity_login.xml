@@ -1,112 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:orientation="vertical"
-    android:background="@drawable/background_login">
+    tools:context=".LoginActivity">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="42dp"
-        app:cardCornerRadius="100dp">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/iv_ic_app"
-            android:src="@drawable/ic_app"/>
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:layout_marginTop="32dp"
-        android:textStyle="bold"
-        android:textSize="48sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/primary_700"
-        android:text="Truy cập Foody ngay!"
-        android:fontFamily="@font/zawtturee"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background_image"
+        android:scaleType="centerCrop"/>
 
     <LinearLayout
-        android:id="@+id/ll_phone"
+        android:background="@color/background_black"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginHorizontal="24dp"
-        android:background="@drawable/background_login"
-        android:backgroundTint="@color/secondary_800"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/ic_phone"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/white" />
+            android:layout_marginTop="42dp"
+            app:cardCornerRadius="100dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/iv_ic_app"
+                android:src="@drawable/ic_app"/>
+        </androidx.cardview.widget.CardView>
 
         <TextView
-            android:background="@null"
+            android:layout_marginTop="32dp"
+            android:textStyle="bold"
+            android:textSize="48sp"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:text="Số điện thoại"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/primary_600"
+            android:text="@string/login_title"
+            android:fontFamily="@font/zawtturee"/>
+
+        <Button
+            android:layout_marginTop="36dp"
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:layout_width="350dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_300"
+            android:text="@string/login_phone"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:drawableTint="@color/white"
             android:id="@+id/pn_login"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="22sp"/>
-    </LinearLayout>
+            android:drawableLeft="@drawable/ic_phone_round"/>
 
-    <LinearLayout
-        android:id="@+id/ll_google"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginHorizontal="24dp"
-        android:background="@drawable/background_login"
-        android:backgroundTint="@color/google"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/ic_google"
+        <Button
+            android:layout_marginTop="24dp"
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:layout_width="350dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/white" />
-
-        <TextView
-            android:background="@null"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:text="Tài khoản Google"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/text_dark_half"
+            android:text="@string/login_google"
             android:textStyle="bold"
             android:textAllCaps="false"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="22sp"/>
+            android:textSize="18sp"
+            android:id="@+id/gg_login"
+            android:drawableLeft="@drawable/ic_google_round"/>
+
+        <Button
+            android:layout_marginTop="24dp"
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:layout_width="350dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/com_facebook_blue"
+            android:text="@string/login_facebook"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:drawableTint="@color/white"
+            android:id="@+id/fb_login"
+            android:drawableLeft="@drawable/ic_facebook_round"/>
+
     </LinearLayout>
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/gg_login"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/fb_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp" />
-
-</LinearLayout>
+</RelativeLayout>

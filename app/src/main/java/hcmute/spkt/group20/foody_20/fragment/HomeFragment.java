@@ -75,10 +75,10 @@ public class HomeFragment extends Fragment {
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 switch (position) {
                     case 0:
-                        tab.setText("Nổi bật");
+                        tab.setText(R.string.outstanding);
                         break;
                     case 1:
-                        tab.setText("Gần tôi");
+                        tab.setText(R.string.near_me);
                         break;
                 }
             }
@@ -88,6 +88,7 @@ public class HomeFragment extends Fragment {
         Spinner sp_provinces = view.findViewById(R.id.sp_provinces);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.province_selected, R.id.tv_province, provinces);
         sp_provinces.setAdapter(adapter);
+        sp_provinces.setSelection(56);
         adapter.setDropDownViewResource(R.layout.province_dropdown);
 
         return view;

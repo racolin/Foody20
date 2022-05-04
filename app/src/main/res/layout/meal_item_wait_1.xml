@@ -38,24 +38,47 @@
                     android:textStyle="bold"
                     android:id="@+id/tv_title"
                     />
-                <TextView
+                <LinearLayout
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Giá: 75.000 đ"
-                    android:textSize="14sp"
-                    android:id="@+id/tv_price"
-                    />
-                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_price"
+                        android:textSize="14sp"
+                        />
+                    <TextView
+                        android:layout_marginStart="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="75.000đ"
+                        android:textSize="14sp"
+                        android:id="@+id/tv_price"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Số lượng: 1"
-                    android:textSize="14sp"
-                    android:id="@+id/tv_amount"
-                    />
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_amount"
+                        android:textSize="14sp"
+                        />
+                    <TextView
+                        android:layout_marginStart="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="14sp"
+                        android:id="@+id/tv_amount"
+                        />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -72,7 +95,7 @@
                     android:layout_columnWeight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thời gian đặt món:"
+                    android:text="@string/time_pick"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     />
@@ -89,7 +112,7 @@
                     android:layout_columnWeight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thời gian nhận món:"
+                    android:text="@string/order_time"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     />
@@ -106,7 +129,7 @@
                     android:layout_columnWeight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Trạng thái:"
+                    android:text="@string/status"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     />
@@ -126,9 +149,9 @@
                     android:layout_columnSpan="2"
                     android:gravity="center">
                     <Button
-                        android:text="Hủy đơn"
-                        android:background="@drawable/background_button"
-                        android:backgroundTint="@color/secondary_700"
+                        android:text="@string/order_cancel"
+                        android:insetTop="6dp"
+                        android:insetBottom="6dp"
                         android:textColor="@color/white"
                         android:textAllCaps="false"
                         android:textStyle="bold"

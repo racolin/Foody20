@@ -49,7 +49,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="Thống kê từ các cửa hàng:"
+                        android:text="@string/chain_rate"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                     <RatingBar
@@ -73,7 +73,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="Số cửa hàng:"
+                        android:text="@string/chain_shop_count"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                     <TextView
@@ -100,7 +100,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mô tả chuỗi cửa hàng:"
+                    android:text="@string/chain_description"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -119,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ll_description"
                 android:padding="8dp"
-                android:text="Danh sách cửa hàng"
+                android:text="@string/chain_list"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />

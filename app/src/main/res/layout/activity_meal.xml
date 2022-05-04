@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="4dp"
-                android:text="Bình luận"
+                android:text="@string/meal_comment"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="4dp"
-                android:text="Lưu lại"
+                android:text="@string/meal_save"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="4dp"
-                android:text="Chia sẻ"
+                android:text="@string/meal_share"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -130,7 +130,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="Quán:"
+                        android:text="@string/meal_shop"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -153,7 +153,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="Được đánh giá :"
+                        android:text="@string/meal_rated"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                     <RatingBar
@@ -179,7 +179,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="Địa chỉ:"
+                        android:text="@string/meal_address"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                     <TextView
@@ -240,7 +240,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mô tả món ăn:"
+                    android:text="@string/meal_description"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -269,7 +269,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Giờ mở cửa"
+                        android:text="@string/meal_time_open"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -289,7 +289,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="8dp"
                     android:id="@+id/btn_contact"
-                    android:text="Liên hệ" />
+                    android:text="@string/meal_contact" />
 
 
             </RelativeLayout>
@@ -318,7 +318,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Bình luận"
+                        android:text="@string/meal_comment"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -340,7 +340,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lưu lại"
+                        android:text="@string/meal_save"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -362,7 +362,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chia sẻ"
+                        android:text="@string/meal_share"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -377,14 +377,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="4.5"
+                        android:text="45"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Đánh giá"
+                        android:text="@string/meal_rate_count"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -395,9 +395,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ll_4"
-                android:paddingVertical="4dp"
                 android:paddingHorizontal="8dp"
-                android:text="Bình luận"
+                android:paddingVertical="4dp"
+                android:text="@string/meal_comment"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -425,7 +425,7 @@
                         android:textSize="16dp"
                         android:textStyle="bold"
                         android:id="@+id/tv_rate"
-                        android:text="Đánh giá"/>
+                        android:text="@string/meal_rate"/>
 
                     <RatingBar
                         style="@style/Widget.AppCompat.RatingBar.Small"
@@ -473,7 +473,7 @@
                 android:layout_marginTop="-10dp"
                 android:insetTop="10dp"
                 android:insetBottom="10dp"
-                android:text="Đăng tải"
+                android:text="@string/meal_post_comment"
                 android:textAllCaps="false"
                 android:textSize="12sp" />
 
@@ -497,7 +497,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ib_more"
                 android:padding="8dp"
-                android:text="Món ăn liên quan"
+                android:text="@string/meal_relate"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -531,7 +531,7 @@
             android:layout_weight="4"
             android:layout_width="0dp"
             android:textStyle="bold"
-            android:text="Đặt ngay"
+            android:text="@string/meal_book"
             android:id="@+id/btn_order_now"
             android:textColor="@color/white"
             android:textAllCaps="false"

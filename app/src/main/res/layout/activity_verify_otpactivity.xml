@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nhập số điện thoại đăng ký:"
+        android:text="@string/verify_phone"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:textStyle="bold"/>
@@ -29,7 +29,7 @@
         android:layout_marginTop="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gửi OTP"
+        android:text="@string/verify_opt"
         android:textSize="18sp"
         android:layout_gravity="center_horizontal"
         android:textAllCaps="false"
@@ -42,7 +42,7 @@
         android:textSize="16sp"
         android:layout_marginTop="8dp"
         android:textColor="@color/purple_800"
-        android:text="Không nhận được OTP? Gửi lại."/>
+        android:text="@string/verify_none"/>
 
     <LinearLayout
         android:layout_marginTop="48dp"
@@ -136,7 +136,7 @@
         android:layout_marginTop="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Xác nhận"
+        android:text="@string/verify_confirm"
         android:textSize="18sp"
         android:layout_gravity="center_horizontal"
         android:textAllCaps="false"

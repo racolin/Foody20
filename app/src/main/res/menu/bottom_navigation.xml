@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/action_home"
-        android:title="Home"
+        android:title="@string/home"
         android:icon="@drawable/ic_home_custom"/>
     <item android:id="@+id/action_notification"
-        android:title="Notification"
+        android:title="@string/notification"
         android:icon="@drawable/ic_notification_custom"/>
     <item android:id="@+id/action_saved"
-        android:title="Saved"
+        android:title="@string/saved"
         android:icon="@drawable/ic_saved_custom"/>
     <item android:id="@+id/action_cart"
-        android:title="Cart"
+        android:title="@string/cart"
         android:icon="@drawable/ic_cart_custom"/>
     <item android:id="@+id/action_order"
-        android:title="Order"
+        android:title="@string/order"
         android:icon="@drawable/ic_order_custom"/>
 </menu>

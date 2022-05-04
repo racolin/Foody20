@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="4dp"
-                android:text="Lưu lại"
+                android:text="@string/meal_save"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="4dp"
-                android:text="Chia sẻ"
+                android:text="@string/meal_share"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -105,7 +105,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="Chuỗi cửa hàng:"
+                        android:text="@string/shop_chain"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -129,7 +129,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
-                        android:text="Thống kê từ các món ăn:"
+                        android:text="@string/shop_rate"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                     <RatingBar
@@ -167,7 +167,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mô tả cửa hàng:"
+                    android:text="@string/shop_description"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -196,7 +196,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Giờ mở cửa"
+                        android:text="@string/meal_time_open"
                         android:textColor="@color/black"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -215,7 +215,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Liên hệ" />
+                    android:text="@string/meal_contact" />
             </RelativeLayout>
 
             <TextView
@@ -223,8 +223,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ll_3"
+                android:text="@string/shop_list"
                 android:padding="8dp"
-                android:text="Danh sách món ăn"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -242,7 +242,7 @@
                 android:layout_below="@id/rv_meals"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
-                android:text="Cửa hàng liên quan"
+                android:text="@string/shop_relate"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />

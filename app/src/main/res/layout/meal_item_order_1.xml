@@ -37,7 +37,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Giá:"
+                    android:text="@string/order_price"
                     android:textSize="12sp"
                     />
                 <TextView
@@ -57,7 +57,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Số lượng:"
+                    android:text="@string/order_amount"
                     android:textSize="12sp"
                     />
                 <TextView
@@ -76,7 +76,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Giao hàng:"
+                    android:text="@string/order_time"
                     android:textSize="12sp"
                     />
                 <TextView
@@ -96,7 +96,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Trạng thái"
+                android:text="@string/status"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 />

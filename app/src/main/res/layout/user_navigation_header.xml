@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textColor="@color/white"
-            android:text="Số điện thoại:"/>
+            android:text="@string/phone_number_lable"/>
 
         <TextView
             android:layout_marginStart="8dp"
@@ -49,6 +49,50 @@
             android:textSize="16sp"
             android:textColor="@color/white"
             android:text="0868754872"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="@string/gmail_lable"/>
+
+        <TextView
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_gmail"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="phantrungtin01@gmail.com"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="@string/facebook_lable"/>
+
+        <TextView
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_facebook"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="tin.phan.1105"/>
     </LinearLayout>
 
 </LinearLayout>

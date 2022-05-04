@@ -76,23 +76,11 @@ public class VerifyOTPActivity extends AppCompatActivity {
 
                     signInWithPhoneAuthCredential(credential);
             } else {
-                Toast.makeText(getApplicationContext(), "Nhập OTP không đúng định dạng!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.otp_not_format, Toast.LENGTH_SHORT).show();
             }
         });
 
         btn_send.setOnClickListener(v -> {
-            timer = new CountDownTimer(TIME_EXPIRE * 1000, 200) {
-                @Override
-                public void onTick(long l) {
-                    tv_count.setText(String.valueOf(l / 1000));
-                }
-
-                @Override
-                public void onFinish() {
-                    btn_confirm.setEnabled(true);
-                }
-            };
-            timer.start();
             sendOTP();
         });
     }
@@ -119,7 +107,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
 
                     @Override
                     public void onVerificationFailed(@NonNull FirebaseException e) {
-                        Toast.makeText(getApplicationContext(), "Có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -130,6 +118,18 @@ public class VerifyOTPActivity extends AppCompatActivity {
                 })
                 .build();
         PhoneAuthProvider.verifyPhoneNumber(phoneAuthOptions);
+        timer = new CountDownTimer(TIME_EXPIRE * 1000, 200) {
+            @Override
+            public void onTick(long l) {
+                tv_count.setText(String.valueOf(l / 1000));
+            }
+
+            @Override
+            public void onFinish() {
+                btn_confirm.setEnabled(true);
+            }
+        };
+        timer.start();
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
@@ -145,7 +145,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
                         } else {
                             // Sign in failed, display a message and update the UI
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(getApplicationContext(), "Có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

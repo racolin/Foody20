@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chính sách của Foody"
+        android:text="@string/rule_title"
         android:textStyle="bold"
         android:textColor="@color/primary_700"
         android:textSize="32sp"/>

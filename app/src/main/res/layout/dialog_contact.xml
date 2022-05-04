@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tv_title"
             android:textSize="24sp"
-            android:text="Thông tin liên lạc"
+            android:text="@string/contact_title"
             android:textColor="@color/primary_700"
             android:textStyle="bold"/>
     </LinearLayout>
@@ -36,7 +36,7 @@
             android:id="@+id/tv_shop_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cửa hàng:"
+            android:text="@string/contact_shop"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -61,7 +61,7 @@
             android:textSize="18sp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text="Số điện thoại:"/>
+            android:text="@string/contact_phone"/>
         <TextView
             android:layout_marginVertical="4dp"
             android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
             android:textSize="18sp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text="Địa chỉ:"/>
+            android:text="@string/contact_address"/>
         <TextView
             android:layout_marginVertical="4dp"
             android:layout_width="wrap_content"
@@ -118,8 +118,8 @@
         <Button
             android:background="@null"
             android:id="@+id/btn_ok"
-            android:textColor="@color/primary_700"
-            android:text="OK"
+            android:textColor="@color/white"
+            android:text="@string/contact_submit"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_width="wrap_content"
