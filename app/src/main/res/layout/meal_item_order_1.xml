@@ -1,96 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="4dp">
     <LinearLayout
-        android:paddingHorizontal="5dp"
-    android:paddingVertical="8dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:id="@+id/iv_meal"
-            android:background="@drawable/background_meal"
-            android:src="@drawable/meal_image"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            />
+        android:orientation="vertical">
+
         <LinearLayout
-            android:layout_marginStart="8dp"
-            android:layout_weight="3"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Canh cá Quỳnh Côi"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="@string/order_id"/>
+            <TextView
+                android:layout_marginStart="4dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_id"
+                android:text="#12"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginVertical="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rv_meals"/>
+        <LinearLayout
+            android:id="@+id/ll_shop"
+            android:layout_marginVertical="4dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contact_shop"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:id="@+id/tv_title"
                 />
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_price"
-                    android:textSize="12sp"
-                    />
-                <TextView
-                    android:layout_marginStart="4dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="75,000đ"
-                    android:textSize="12sp"
-                    android:id="@+id/tv_price"
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_amount"
-                    android:textSize="12sp"
-                    />
-                <TextView
-                    android:layout_marginStart="4dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1"
-                    android:textSize="12sp"
-                    android:id="@+id/tv_amount"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/order_time"
-                    android:textSize="12sp"
-                    />
-                <TextView
-                    android:layout_marginStart="4dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11:41 10/04/2022"
-                    android:textSize="12sp"
-                    android:id="@+id/tv_time_end"
-                    />
-            </LinearLayout>
+            <TextView
+                android:layout_marginStart="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thành Mập 1"
+                android:textSize="16sp"
+                android:id="@+id/tv_shop"
+                />
         </LinearLayout>
         <LinearLayout
-            android:orientation="vertical"
+            android:id="@+id/ll_start"
+            android:layout_marginVertical="4dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_columnWeight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/time_pick"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_columnWeight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11:41 10/04/2022 "
+                android:textSize="16sp"
+                android:id="@+id/tv_time_start"
+                android:layout_marginStart="4dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_end"
+            android:layout_marginVertical="4dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_time"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_marginStart="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11:41 10/04/2022"
+                android:textSize="16sp"
+                android:id="@+id/tv_time_end"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_total"
+            android:layout_marginVertical="4dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_total_price"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_marginStart="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="75,000đ"
+                android:textSize="16sp"
+                android:id="@+id/tv_price"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_status"
+            android:layout_marginVertical="4dp"
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
@@ -101,12 +143,53 @@
                 android:textStyle="bold"
                 />
             <TextView
+                android:layout_marginStart="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Đang giao"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:id="@+id/tv_status"
                 />
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_cause"
+            android:layout_marginVertical="4dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cause"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="16sp"
+                android:id="@+id/tv_cause"
+                android:layout_marginStart="4dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <Button
+                android:text="@string/order_cancel"
+                android:insetTop="8dp"
+                android:insetBottom="8dp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:id="@+id/btn_cancel_order"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
     </LinearLayout>
 
+
+</androidx.cardview.widget.CardView>

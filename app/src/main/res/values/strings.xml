@@ -31,11 +31,14 @@
 
 <!--    Order Activity -->
     <string name="order_price">Giá:</string>
+    <string name="order_id">Đơn hàng</string>
+    <string name="order_distance">Khoảng cách:</string>
+    <string name="order_total_price">Giá trị đơn hàng:</string>
     <string name="order_amount">Số lượng:</string>
     <string name="order_name">Tên người nhận:</string>
     <string name="order_phone">Số điện thoại:</string>
-    <string name="order_time">Thời gian nhận hàng:</string>
-    <string name="order_address">Địa chỉ nhận hàng:</string>
+    <string name="order_time">Nhận hàng:</string>
+    <string name="order_address">Địa chỉ nhận:</string>
     <string name="order_cancel">Hủy đơn</string>
 <!--    Order Activity -->
 
@@ -74,17 +77,17 @@
 <!--    Home Fragment -->
 
 <!--    Meal Item -->
-    <string name="time_pick">Thời gian đặt món:</string>
+    <string name="time_pick">Đặt món:</string>
     <string name="status">Trạng thái:</string>
     <string name="cause">Nguyên nhân:</string>
 <!--    Meal Item -->
 
 
 <!--    Error -->
-    <string name="error">Có lỗi đã xảy ra </string>
-    <string name="login_need">Cần phải đăng nhập </string>
-    <string name="no_data">Chưa có dữ liệu </string>
-    <string name="facebook_login_need">Đăng nhập Facebook trước </string>
+    <string name="error">Có lỗi đã xảy ra&#160;</string>
+    <string name="login_need">Cần phải đăng nhập&#160;</string>
+    <string name="no_data">Chưa có dữ liệu&#160;</string>
+    <string name="facebook_login_need">Đăng nhập Facebook trước&#160;</string>
 <!--    Error -->
 
 <!--    Login -->
@@ -129,6 +132,9 @@
 
     <string name="date_default">11/05/2001</string>
     <string name="login_failed">Đăng nhập thất bại!</string>
+    <string name="login_success">Đăng nhập thành công!</string>
+    <string name="link_success">Liên kết thành công!</string>
+    <string name="link_failed">Liên kết thất bại!</string>
     <string name="login_error">Đã có lỗi xảy ra!</string>
     <string name="otp_not_format">Nhập OTP không đúng định dạng!</string>
 

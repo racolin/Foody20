@@ -1,38 +1,50 @@
 package hcmute.spkt.group20.foody_20.model;
 
+import java.util.List;
+
+import hcmute.spkt.group20.foody_20.Support;
+
 public class Cart {
-    private String title;
-    private String price;
-    private int image;
+    private String shop;
+    private String distance;
+    private List<CartItem> items;
 
-    public Cart(String title, String price, int image) {
-        this.title = title;
-        this.price = price;
-        this.image = image;
+    public Cart(String shop, String distance, List<CartItem> items) {
+        this.shop = shop;
+        this.distance = distance;
+        this.items = items;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTotal() {
+        int price = 0;
+        for (CartItem item : items) {
+            price += item.getPrice();
+        }
+        return Support.toCurrency(price);
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getShop() {
+        return shop;
     }
 
-    public String getPrice() {
-        return price;
+    public void setShop(String shop) {
+        this.shop = shop;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public String getDistance() {
+        return distance;
     }
 
-    public int getImage() {
-        return image;
+    public void setDistance(String distance) {
+        this.distance = distance;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public List<CartItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<CartItem> items) {
+        this.items = items;
     }
 }
 

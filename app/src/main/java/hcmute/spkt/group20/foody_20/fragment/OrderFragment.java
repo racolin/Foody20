@@ -2,7 +2,6 @@ package hcmute.spkt.group20.foody_20.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +20,7 @@ import java.util.List;
 
 import hcmute.spkt.group20.foody_20.R;
 import hcmute.spkt.group20.foody_20.Support;
-import hcmute.spkt.group20.foody_20.adapter.OrderAllAdapter;
-import hcmute.spkt.group20.foody_20.adapter.OrderCancelAdapter;
-import hcmute.spkt.group20.foody_20.adapter.OrderDeliveryAdapter;
-import hcmute.spkt.group20.foody_20.adapter.OrderWaitAdapter;
+import hcmute.spkt.group20.foody_20.adapter.OrderAdapter;
 import hcmute.spkt.group20.foody_20.model.Order;
 
 public class OrderFragment extends Fragment {
@@ -52,7 +48,7 @@ public class OrderFragment extends Fragment {
             v = inflater.inflate(R.layout.fragment_order, container, false);
             mapping(v);
             rv_orders = v.findViewById(R.id.rv_orders);
-            rv_orders.setAdapter(new OrderAllAdapter(getContext(), allOrder));
+            rv_orders.setAdapter(new OrderAdapter(getContext(), allOrder));
             rv_orders.setLayoutManager(new LinearLayoutManager(getContext()));
         }
 
@@ -69,42 +65,42 @@ public class OrderFragment extends Fragment {
         rd_all.setOnCheckedChangeListener((compoundButton, b) -> {
             if (b) {
                 clearCheck();
-                rv_orders.setAdapter(new OrderAllAdapter(getContext(), allOrder));
+                rv_orders.setAdapter(new OrderAdapter(getContext(), allOrder));
                 rd_all.setChecked(true);
             }
         });
         rd_wait.setOnCheckedChangeListener((compoundButton, b) -> {
             if (b) {
                 clearCheck();
-                rv_orders.setAdapter(new OrderWaitAdapter(getContext(), filterWaitOrders(allOrder)));
+                rv_orders.setAdapter(new OrderAdapter(getContext(), filterWaitOrders(allOrder)));
                 rd_wait.setChecked(true);
             }
         });
         rd_delivered.setOnCheckedChangeListener((compoundButton, b) -> {
             if (b) {
                 clearCheck();
-                rv_orders.setAdapter(new OrderDeliveryAdapter(getContext(), filterDeliveringOrders(allOrder)));
+                rv_orders.setAdapter(new OrderAdapter(getContext(), filterDeliveredOrders(allOrder)));
                 rd_delivered.setChecked(true);
             }
         });
         rd_delivering.setOnCheckedChangeListener((compoundButton, b) -> {
             if (b) {
                 clearCheck();
-                rv_orders.setAdapter(new OrderDeliveryAdapter(getContext(), filterDeliveredOrders(allOrder)));
+                rv_orders.setAdapter(new OrderAdapter(getContext(), filterDeliveringOrders(allOrder)));
                 rd_delivering.setChecked(true);
             }
         });
         rd_you_cancel.setOnCheckedChangeListener((compoundButton, b) -> {
             if (b) {
                 clearCheck();
-                rv_orders.setAdapter(new OrderCancelAdapter(getContext(), filterYouCancelOrders(allOrder)));
+                rv_orders.setAdapter(new OrderAdapter(getContext(), filterYouCancelOrders(allOrder)));
                 rd_you_cancel.setChecked(true);
             }
         });
         rd_shop_cancel.setOnCheckedChangeListener((compoundButton, b) -> {
             if (b) {
                 clearCheck();
-                rv_orders.setAdapter(new OrderCancelAdapter(getContext(), filterShopCancelOrders(allOrder)));
+                rv_orders.setAdapter(new OrderAdapter(getContext(), filterShopCancelOrders(allOrder)));
                 rd_shop_cancel.setChecked(true);
             }
         });

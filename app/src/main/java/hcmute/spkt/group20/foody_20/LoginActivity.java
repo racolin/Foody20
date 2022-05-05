@@ -71,6 +71,18 @@ public class LoginActivity extends AppCompatActivity {
             }
     );
 
+    ActivityResultLauncher<Intent> verifyLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == RESULT_OK) {
+                        finish();
+                    }
+                }
+            }
+    );
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -90,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                 .requestEmail()
                 .requestProfile()
                 .build();
+
         googleSignInClient = GoogleSignIn.getClient(this, gso);
         // login google
 
@@ -160,7 +173,7 @@ public class LoginActivity extends AppCompatActivity {
 
         pn_login.setOnClickListener(v -> {
             Intent intent = new Intent(this, VerifyOTPActivity.class);
-            startActivity(intent);
+            verifyLauncher.launch(intent);
         });
     }
 

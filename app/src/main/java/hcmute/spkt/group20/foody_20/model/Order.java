@@ -1,5 +1,9 @@
 package hcmute.spkt.group20.foody_20.model;
 
+import java.util.List;
+
+import hcmute.spkt.group20.foody_20.Support;
+
 public class Order {
     private String id;
     private String title;
@@ -8,8 +12,26 @@ public class Order {
     private String status;
     private String cause;
     private int image;
-    private String price;
-    private String amount;
+    List<OrderItem> items;
+
+    public Order(String id, String title, String time_end, String time_start, String status, String cause, int image, List<OrderItem> items) {
+        this.id = id;
+        this.title = title;
+        this.time_end = time_end;
+        this.time_start = time_start;
+        this.status = status;
+        this.cause = cause;
+        this.image = image;
+        this.items = items;
+    }
+
+    public String getPriceCurrency() {
+        int result = 0;
+        for (OrderItem item : items) {
+            result += item.getPrice();
+        }
+        return Support.toCurrency(result);
+    }
 
     public Order() {
 
@@ -23,20 +45,16 @@ public class Order {
         this.status = order.status;
         this.cause = order.cause;
         this.image = order.image;
-        this.price = order.price;
-        this.amount = order.amount;
+        this.items = order.items;
     }
 
-    public Order(String id, String title, String time_end, String time_start, String status, String cause, int image, String price, String amount) {
-        this.id = id;
-        this.title = title;
-        this.time_end = time_end;
-        this.time_start = time_start;
-        this.status = status;
-        this.cause = cause;
-        this.image = image;
-        this.price = price;
-        this.amount = amount;
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
     }
 
     public String getId() {
@@ -93,21 +111,5 @@ public class Order {
 
     public void setImage(int image) {
         this.image = image;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public String getAmount() {
-        return amount;
-    }
-
-    public void setAmount(String amount) {
-        this.amount = amount;
     }
 }

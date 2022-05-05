@@ -50,9 +50,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_300"
             android:text="@string/login_phone"
-            android:textStyle="bold"
             android:textAllCaps="false"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:drawableTint="@color/white"
             android:id="@+id/pn_login"
             android:drawableLeft="@drawable/ic_phone_round"/>
@@ -66,9 +65,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/text_dark_half"
             android:text="@string/login_google"
-            android:textStyle="bold"
             android:textAllCaps="false"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:id="@+id/gg_login"
             android:drawableLeft="@drawable/ic_google_round"/>
 
@@ -81,9 +79,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/com_facebook_blue"
             android:text="@string/login_facebook"
-            android:textStyle="bold"
             android:textAllCaps="false"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:drawableTint="@color/white"
             android:id="@+id/fb_login"
             android:drawableLeft="@drawable/ic_facebook_round"/>

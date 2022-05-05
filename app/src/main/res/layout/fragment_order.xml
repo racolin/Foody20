@@ -55,9 +55,8 @@
             android:id="@+id/rd_shop_cancel"
             android:text="@string/order_shop_cancel"/>
     </GridLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rv_orders"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rv_orders"/>
 </LinearLayout>

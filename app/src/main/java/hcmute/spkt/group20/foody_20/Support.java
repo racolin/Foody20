@@ -10,10 +10,12 @@ import java.util.Date;
 import java.util.List;
 
 import hcmute.spkt.group20.foody_20.model.Cart;
+import hcmute.spkt.group20.foody_20.model.CartItem;
 import hcmute.spkt.group20.foody_20.model.Comment;
 import hcmute.spkt.group20.foody_20.model.Meal;
 import hcmute.spkt.group20.foody_20.model.Notification;
 import hcmute.spkt.group20.foody_20.model.Order;
+import hcmute.spkt.group20.foody_20.model.OrderItem;
 import hcmute.spkt.group20.foody_20.model.Shop;
 import hcmute.spkt.group20.foody_20.model.Slider;
 
@@ -47,13 +49,14 @@ public class Support {
         String input = String.valueOf(value);
         StringBuilder builder = new StringBuilder();
         int len = input.length();
-        for (int i = len; i > 0; i--) {
+        for (int i = len - 1; i > 0; i--) {
             builder.append(input.charAt(i));
             if ((len - i) % 3 == 0) {
                 builder.append(",");
+                builder.toString();
             }
         }
-        return builder.append(input.charAt(0)).toString();
+        return builder.append(input.charAt(0)).reverse().toString();
     }
     public static String toDateString(Date date, String fm) {
         SimpleDateFormat format = new SimpleDateFormat(fm);
@@ -125,51 +128,60 @@ public class Support {
 
     public static List<Cart> createCarts() {
         List<Cart> carts = new ArrayList<>();
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_image));
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_10));
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_6));
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_3));
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_8));
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_6));
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal_image));
-        carts.add(new Cart("Canh cá Quỳnh Côi", "75.000đ", R.drawable.meal));
+        carts.add(new Cart("Thành Mập 1", "2.3km", createCartItems()));
+        carts.add(new Cart("Thành Mập 1", "2.3km", createCartItems()));
+        carts.add(new Cart("Thành Mập 1", "2.3km", createCartItems()));
+        carts.add(new Cart("Thành Mập 1", "2.3km", createCartItems()));
+        carts.add(new Cart("Thành Mập 1", "2.3km", createCartItems()));
         return carts;
+    }
+
+    public static List<CartItem> createCartItems() {
+        List<CartItem> items = new ArrayList<>();
+        items.add(new CartItem("Canh cá Quỳnh Côi", 75000, 1, R.drawable.meal_image));
+        items.add(new CartItem("Canh cá Quỳnh Côi", 150000, 2, R.drawable.meal_10));
+        return items;
+    }
+    public static List<OrderItem> createOrderItems() {
+        List<OrderItem> items = new ArrayList<>();
+        items.add(new OrderItem(new Meal("Cơm Tấm Cây Khế 3 - Nguyễn Văn Khối",
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_10), 2, 15000));
+        items.add(new OrderItem(new Meal("Cơm Tấm Cây Khế 3 - Nguyễn Văn Khối",
+                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_4), 2, 15000));
+        return items;
     }
 
     public static List<Order> createAllOrders() {
         List<Order> orders = new ArrayList<>();
-        orders.add(new Order("#21", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang đợi", "", R.drawable.meal_10, "75.000đ", "1"));
-        orders.add(new Order("#20", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang đợi", "", R.drawable.meal_4, "75.000đ", "1"));
-        orders.add(new Order("#19", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang đợi", "", R.drawable.meal_7, "75.000đ", "1"));
-        orders.add(new Order("#18", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang đợi", "", R.drawable.meal_8, "75.000đ", "1"));
 
-        orders.add(new Order("#14", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang giao", "", R.drawable.meal_3, "75.000đ", "1"));
-        orders.add(new Order("#13", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang giao", "", R.drawable.meal_10, "75.000đ", "1"));
-        orders.add(new Order("#12", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang giao", "", R.drawable.meal_10, "75.000đ", "1"));
+        orders.add(new Order("#21", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
+                "Đang đợi", "", R.drawable.shop_7, createOrderItems()));
+        orders.add(new Order("#19", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
+                "Đang đợi", "", R.drawable.shop_6, createOrderItems()));
+        orders.add(new Order("#18", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
+                "Đang đợi", "", R.drawable.shop_5, createOrderItems()));
 
-        orders.add(new Order("#7", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đã giao", "", R.drawable.meal_8, "75.000đ", "1"));
-        orders.add(new Order("#6", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đã giao", "", R.drawable.meal_2, "75.000đ", "1"));
-        orders.add(new Order("#5", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đã giao", "", R.drawable.meal_8, "75.000đ", "1"));
-        orders.add(new Order("#4", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đã giao", "", R.drawable.meal_6, "75.000đ", "1"));
+        orders.add(new Order("#16", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
+                "Đang giao", "", R.drawable.shop_7, createOrderItems()));
+        orders.add(new Order("#15", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
+                "Đang giao", "", R.drawable.shop_6, createOrderItems()));
+        orders.add(new Order("#13", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
+                "Đang giao", "", R.drawable.shop_5, createOrderItems()));
 
-        orders.add(new Order("#29", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Bạn hủy", "Đặt nhầm", R.drawable.meal_4, "75.000đ", "1"));
-        orders.add(new Order("#28", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Bạn hủy", "Đặt đặt món khác", R.drawable.meal_9, "75.000đ", "1"));
+        orders.add(new Order("#12", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
+                "Đã giao", "", R.drawable.shop_2, createOrderItems()));
+        orders.add(new Order("#11", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
+                "Đã giao", "", R.drawable.shop_3, createOrderItems()));
+        orders.add(new Order("#10", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
+                "Đã giao", "", R.drawable.shop_8, createOrderItems()));
 
-        orders.add(new Order("#37", "Canh cá Quỳnh Côi", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Shop hủy", "Hết nguyên liệu", R.drawable.meal_10, "75.000đ", "1"));
+        orders.add(new Order("#09", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
+                "Bạn hủy", "Đặt nhầm", R.drawable.meal_4, createOrderItems()));
+        orders.add(new Order("#07", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
+                "Bạn hủy", "Đặt đặt món khác", R.drawable.meal_9, createOrderItems()));
+
+        orders.add(new Order("#06", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
+                "Shop hủy", "Hết nguyên liệu", R.drawable.meal_10, createOrderItems()));
 
         return orders;
     }

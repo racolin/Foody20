@@ -3,11 +3,9 @@ package hcmute.spkt.group20.foody_20;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,15 +16,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class VerifyOTPActivity extends AppCompatActivity {
@@ -46,7 +39,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verify_otpactivity);
+        setContentView(R.layout.activity_verify_otp);
         auth = FirebaseAuth.getInstance();
         initUI();
         initListener();
@@ -114,22 +107,22 @@ public class VerifyOTPActivity extends AppCompatActivity {
                     public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         super.onCodeSent(s, forceResendingToken);
                         verificationId = s;
+                        timer = new CountDownTimer(TIME_EXPIRE * 1000, 200) {
+                            @Override
+                            public void onTick(long l) {
+                                tv_count.setText(String.valueOf(l / 1000));
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                btn_confirm.setEnabled(true);
+                            }
+                        };
+                        timer.start();
                     }
                 })
                 .build();
         PhoneAuthProvider.verifyPhoneNumber(phoneAuthOptions);
-        timer = new CountDownTimer(TIME_EXPIRE * 1000, 200) {
-            @Override
-            public void onTick(long l) {
-                tv_count.setText(String.valueOf(l / 1000));
-            }
-
-            @Override
-            public void onFinish() {
-                btn_confirm.setEnabled(true);
-            }
-        };
-        timer.start();
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
@@ -152,8 +145,10 @@ public class VerifyOTPActivity extends AppCompatActivity {
     }
 
     private void loginSuccess() {
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, HomeActivity.class);
+//        startActivity(intent);
+        timer.cancel();
+        setResult(RESULT_OK);
         finish();
     }
 }

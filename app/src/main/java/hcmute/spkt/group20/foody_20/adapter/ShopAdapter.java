@@ -62,7 +62,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
 
         public ShopHolder(@NonNull View itemView) {
             super(itemView);
-            this.iv_shop = itemView.findViewById(R.id.iv_shop);
+            this.iv_shop = itemView.findViewById(R.id.iv_meal);
             this.tv_title = itemView.findViewById(R.id.tv_title);
             this.tv_description = itemView.findViewById(R.id.tv_description);
             DisplayMetrics metrics = new DisplayMetrics();

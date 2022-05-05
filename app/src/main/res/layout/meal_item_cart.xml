@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardElevation="10dp">
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rv_cart_item"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thành Mập 1"
+                android:id="@+id/tv_shop_name"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_toRightOf="@id/tv_shop_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:id="@+id/temp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:layout_toRightOf="@id/temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2.3km"
+                android:layout_marginStart="4dp"
+                android:id="@+id/tv_distance"
+                android:textStyle="bold"
+                android:textColor="@color/primary_700"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/temp1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_shop_name"
+                android:text="@string/order_total_price"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_below="@id/tv_shop_name"
+                android:layout_toRightOf="@id/temp1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="150,000đ"
+                android:layout_marginStart="4dp"
+                android:id="@+id/tv_total_price"
+                android:textStyle="bold"
+                android:textColor="@color/primary_700"
+                android:textSize="16sp"/>
+
+            <Button
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="24dp"
+                android:layout_marginStart="4dp"
+                android:id="@+id/btn_buy_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:insetTop="8dp"
+                android:insetBottom="8dp"
+                android:text="@string/meal_book"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
