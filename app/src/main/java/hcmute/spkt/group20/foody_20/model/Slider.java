@@ -1,18 +1,25 @@
 package hcmute.spkt.group20.foody_20.model;
 
-public class Slider {
-    private int id;
+import java.io.Serializable;
 
-    public Slider(int id) {
-        this.id = id;
+/*OK*/
+public class Slider implements Serializable {
+    private byte[] image;
+
+    public Slider() {
+
     }
 
-    public int getId() {
-        return id;
+    public Slider(byte[] image) {
+        this.image = image;
     }
 
-    public void setId(int id_slider) {
-        this.id = id_slider;
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }
 

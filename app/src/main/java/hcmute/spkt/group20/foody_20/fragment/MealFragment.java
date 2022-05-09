@@ -1,6 +1,7 @@
 package hcmute.spkt.group20.foody_20.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,10 +32,19 @@ public class MealFragment extends Fragment {
         this.meals = meals;
     }
 
+    public void updateData(List<Meal> meals) {
+        this.meals = meals;
+        Log.d("rrrrraa", adapter == null ? "null" : "not null");
+        if (adapter != null) {
+            adapter.update(meals);
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_meals, container, false);
+        Log.d("rrrrraaa", "init");
         adapter = new MealAdapter(getActivity(), meals);
         rv_2_items = view.findViewById(R.id.rv_2_items);
         rv_2_items.setAdapter(adapter);

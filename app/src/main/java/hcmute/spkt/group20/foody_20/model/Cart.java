@@ -1,49 +1,57 @@
 package hcmute.spkt.group20.foody_20.model;
 
+import com.google.firebase.firestore.Exclude;
+
+import java.io.Serializable;
 import java.util.List;
 
-import hcmute.spkt.group20.foody_20.Support;
+/*OK*/
 
-public class Cart {
-    private String shop;
-    private String distance;
-    private List<CartItem> items;
+public class Cart implements Serializable {
+    private Shop shop;//
+    private String shop_id;
+    private List<OrderItem> items;
 
-    public Cart(String shop, String distance, List<CartItem> items) {
+    public Cart(Shop shop, List<OrderItem> items) {
         this.shop = shop;
-        this.distance = distance;
         this.items = items;
     }
 
-    public String getTotal() {
-        int price = 0;
-        for (CartItem item : items) {
-            price += item.getPrice();
+    public int getTotal_price() {
+        if (items != null) {
+            int r = 0;
+            for (OrderItem item : items) {
+                r += item.getMeal().getPrice();
+            }
+            return r;
         }
-        return Support.toCurrency(price);
+        return 0;
     }
 
-    public String getShop() {
+    public String getShop_id() {
+        return shop_id;
+    }
+
+    public void setShop_id(String shop_id) {
+//        load shop
+        this.shop_id = shop_id;
+    }
+
+    @Exclude
+    public Shop getShop() {
         return shop;
     }
 
-    public void setShop(String shop) {
+    @Exclude
+    public void setShop(Shop shop) {
         this.shop = shop;
     }
 
-    public String getDistance() {
-        return distance;
-    }
-
-    public void setDistance(String distance) {
-        this.distance = distance;
-    }
-
-    public List<CartItem> getItems() {
+    public List<OrderItem> getItems() {
         return items;
     }
 
-    public void setItems(List<CartItem> items) {
+    public void setItems(List<OrderItem> items) {
         this.items = items;
     }
 }

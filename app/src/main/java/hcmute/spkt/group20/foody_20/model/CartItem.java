@@ -1,54 +1,45 @@
 package hcmute.spkt.group20.foody_20.model;
 
-import hcmute.spkt.group20.foody_20.Support;
+import com.google.firebase.firestore.Exclude;
 
 public class CartItem {
-    private String title;
-    private int price;
+    private Meal meal;//
+    private String meal_id;
     private int amount;
-    private int image;
 
-    public CartItem(String title, int price, int amount, int image) {
-        this.title = title;
-        this.price = price;
-        this.amount = amount;
-        this.image = image;
+    public CartItem() {
+
     }
 
-    public String getAmount() {
-        return String.valueOf(amount);
+    public CartItem(Meal meal, String meal_id, int amount) {
+        this.meal = meal;
+        this.meal_id = meal_id;
+        this.amount = amount;
+    }
+
+    @Exclude
+    public Meal getMeal() {
+        return meal;
+    }
+
+    @Exclude
+    public void setMeal(Meal meal) {
+        this.meal = meal;
+    }
+
+    public String getMeal_id() {
+        return meal_id;
+    }
+
+    public void setMeal_id(String meal_id) {
+        this.meal_id = meal_id;
+    }
+
+    public int getAmount() {
+        return amount;
     }
 
     public void setAmount(int amount) {
         this.amount = amount;
     }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getPriceCurrency() {
-        return Support.toCurrency(price) + "đ";
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
-    }
 }
-

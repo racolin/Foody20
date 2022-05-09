@@ -16,26 +16,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import hcmute.spkt.group20.foody_20.HomeActivity;
+import hcmute.spkt.group20.foody_20.MealActivity;
 import hcmute.spkt.group20.foody_20.R;
 import hcmute.spkt.group20.foody_20.ShopActivity;
+import hcmute.spkt.group20.foody_20.ShopChainActivity;
+import hcmute.spkt.group20.foody_20.Support;
 import hcmute.spkt.group20.foody_20.model.Shop;
+import hcmute.spkt.group20.foody_20.model.ShopChain;
 
 public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
     List<Shop> shops;
     Context context;
-    LayoutInflater inflater;
 
     public ShopAdapter(Context context, List<Shop> shops) {
         this.context = context;
         this.shops = shops;
-        this.inflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
-    public ShopAdapter.ShopHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.shop_item_2, parent, false);
-        ShopAdapter.ShopHolder holder = new ShopAdapter.ShopHolder(view);
+    public ShopHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.shop_item_2, parent, false);
+        ShopHolder holder = new ShopHolder(view);
         view.setOnClickListener(v -> {
             Intent intent = new Intent((HomeActivity) context, ShopActivity.class);
             ((AppCompatActivity) context).startActivity(intent);
@@ -44,10 +46,17 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ShopAdapter.ShopHolder holder, int position) {
-        holder.iv_shop.setImageResource(shops.get(position).getImage());
-        holder.tv_title.setText(shops.get(position).getName());
+    public void onBindViewHolder(@NonNull ShopHolder holder, int position) {
+        holder.iv_shop.setImageBitmap(Support.convertBitmap(shops.get(position).getImage()));
+        holder.tv_name.setText(shops.get(position).getName());
         holder.tv_description.setText(shops.get(position).getDescription());
+        holder.tv_distance.setText(shops.get(position).getDistance());
+        holder.tv_rated.setText(String.valueOf(shops.get(position).getRated()));
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ShopChainActivity.class);
+            intent.putExtra("shop", shops.get(position));
+            (context).startActivity(intent);
+        });
     }
 
     @Override
@@ -58,13 +67,16 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
 
     protected class ShopHolder extends RecyclerView.ViewHolder {
         ImageView iv_shop;
-        TextView tv_title, tv_description;
+        TextView tv_name, tv_description, tv_distance, tv_rated;
 
         public ShopHolder(@NonNull View itemView) {
             super(itemView);
-            this.iv_shop = itemView.findViewById(R.id.iv_meal);
-            this.tv_title = itemView.findViewById(R.id.tv_title);
-            this.tv_description = itemView.findViewById(R.id.tv_description);
+            iv_shop = itemView.findViewById(R.id.iv_shop);
+            tv_name = itemView.findViewById(R.id.tv_name);
+            tv_description = itemView.findViewById(R.id.tv_description);
+            tv_rated = itemView.findViewById(R.id.tv_rated);
+            tv_distance = itemView.findViewById(R.id.tv_distance);
+
             DisplayMetrics metrics = new DisplayMetrics();
             ((AppCompatActivity) context).getWindowManager().getDefaultDisplay().getMetrics(metrics);
             int width = metrics.widthPixels;

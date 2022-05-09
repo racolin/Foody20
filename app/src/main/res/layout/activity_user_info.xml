@@ -26,7 +26,6 @@
                     android:layout_width="120dp"
                     android:layout_height="180dp"
                     android:id="@+id/ib_avatar"
-                    android:src="@drawable/user_avatar"
                     android:scaleType="centerCrop"/>
 
             </androidx.cardview.widget.CardView>
@@ -42,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Phan Trung Tín"
-                    android:textColor="@color/secondary_700"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 
@@ -56,7 +55,7 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:background="@drawable/ic_gender"
-                        android:backgroundTint="@color/secondary_700"/>
+                        android:backgroundTint="@color/purple_500"/>
                     <Spinner
                         android:layout_marginStart="8dp"
                         android:textSize="14sp"
@@ -76,8 +75,8 @@
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:background="@drawable/ic_cake"
-                        android:backgroundTint="@color/secondary_700"/>
+                        android:background="@drawable/ic_birthday_fill"
+                        android:backgroundTint="@color/primary_700"/>
                     <TextView
                         android:layout_marginStart="8dp"
                         android:layout_width="wrap_content"
@@ -90,8 +89,8 @@
                         android:layout_marginStart="8dp"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:background="@drawable/ic_choose_dob"
-                        android:backgroundTint="@color/secondary_700"
+                        android:background="@drawable/ic_calendar"
+                        android:backgroundTint="@color/primary_700"
                         android:id="@+id/ib_choose_dob"/>
 
                 </LinearLayout>
@@ -106,8 +105,8 @@
                         android:id="@+id/iv_phone"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:background="@drawable/ic_phone"
-                        android:backgroundTint="@color/secondary_700"/>
+                        android:background="@drawable/ic_phone_round"
+                        android:backgroundTint="@color/secondary_400"/>
                     <TextView
                         android:layout_marginStart="8dp"
                         android:layout_width="wrap_content"
@@ -128,8 +127,7 @@
                         android:id="@+id/iv_google"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:background="@drawable/ic_mail"
-                        android:backgroundTint="@color/secondary_700"/>
+                        android:background="@drawable/ic_google_round"/>
                     <TextView
                         android:layout_marginStart="8dp"
                         android:layout_width="wrap_content"
@@ -150,8 +148,8 @@
                         android:id="@+id/iv_facebook"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:background="@drawable/ic_facebook"
-                        android:backgroundTint="@color/secondary_700"/>
+                        android:background="@drawable/ic_facebook_round"
+                        android:backgroundTint="@color/com_facebook_blue"/>
                     <TextView
                         android:layout_marginStart="8dp"
                         android:layout_width="wrap_content"
@@ -177,8 +175,8 @@
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:id="@+id/iv_address"
-                android:background="@drawable/ic_address"
-                android:backgroundTint="@color/secondary_700"/>
+                android:background="@drawable/ic_address_fill"
+                android:backgroundTint="@color/primary_900"/>
 
             <EditText
                 android:id="@+id/tv_address"

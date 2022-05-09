@@ -31,7 +31,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
     private static final long TIME_EXPIRE = 120L;
 
 
-    public static final String TAG = "PhoneAuthActivity";
+    public static final String TAG = VerifyOTPActivity.class.getSimpleName();
     public String verificationId;
 
     FirebaseAuth auth;
@@ -145,8 +145,6 @@ public class VerifyOTPActivity extends AppCompatActivity {
     }
 
     private void loginSuccess() {
-//        Intent intent = new Intent(this, HomeActivity.class);
-//        startActivity(intent);
         timer.cancel();
         setResult(RESULT_OK);
         finish();

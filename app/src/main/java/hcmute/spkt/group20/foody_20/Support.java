@@ -1,26 +1,49 @@
 package hcmute.spkt.group20.foody_20;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import hcmute.spkt.group20.foody_20.adapter.SliderAdapter;
 import hcmute.spkt.group20.foody_20.model.Cart;
-import hcmute.spkt.group20.foody_20.model.CartItem;
-import hcmute.spkt.group20.foody_20.model.Comment;
 import hcmute.spkt.group20.foody_20.model.Meal;
 import hcmute.spkt.group20.foody_20.model.Notification;
 import hcmute.spkt.group20.foody_20.model.Order;
-import hcmute.spkt.group20.foody_20.model.OrderItem;
+import hcmute.spkt.group20.foody_20.model.RatingClass;
 import hcmute.spkt.group20.foody_20.model.Shop;
 import hcmute.spkt.group20.foody_20.model.Slider;
+import hcmute.spkt.group20.foody_20.state_fragment.HomeStateFragment;
 
 public class Support {
-    public static boolean check(String type) {
+
+    public static List<RatingClass> rating = new ArrayList<>();
+
+    public static boolean checkTypeLogin(String type) {
         boolean result = false;
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -31,19 +54,18 @@ public class Support {
         return result;
     }
     public static boolean checkGoogle() {
-        return Support.check("google.com");
+        return Support.checkTypeLogin("google.com");
     }
     public static boolean checkFacebook() {
-        return Support.check("facebook.com");
+        return Support.checkTypeLogin("facebook.com");
     }
     public static boolean checkPhone() {
-        return Support.check("phone");
+        return Support.checkTypeLogin("phone");
     }
     public static boolean checkLogin() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         return user == null ? false : user.getProviderData().size() > 1;
     }
-
 
     public static String toCurrency(int value) {
         String input = String.valueOf(value);
@@ -56,312 +78,271 @@ public class Support {
                 builder.toString();
             }
         }
-        return builder.append(input.charAt(0)).reverse().toString();
+        return builder.append(input.charAt(0)).reverse().toString() + "đ";
     }
+
     public static String toDateString(Date date, String fm) {
         SimpleDateFormat format = new SimpleDateFormat(fm);
         return format.format(date);
     }
 
-    public static List<Meal> createMeals() {
-        List<Meal> meals = new ArrayList<>();
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_2));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_3));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_4));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_5));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_6));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_7));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_8));
-        return meals;
+    public static String toDateString(Calendar calendar, String fm) {
+        SimpleDateFormat format = new SimpleDateFormat(fm);
+        return format.format(calendar);
     }
 
-    public static List<Meal> createMeals1() {
-        List<Meal> meals = new ArrayList<>();
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_image));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_6));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_7));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_5));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_10));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_9));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_3));
-        return meals;
+    public static Bitmap convertBitmap(byte[] bytes) {
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
     }
 
-    public static List<Meal> createMeals2() {
-        List<Meal> meals = new ArrayList<>();
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_10));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_3));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_5));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_9));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_6));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_4));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_7));
-        meals.add(new Meal("Canh cá Quỳnh Côi",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_8));
-        return meals;
+    public static void getRatingClass() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("rating_class")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            rating = task.getResult().toObjects(RatingClass.class);
+                        } else {
+                            rating.add(new RatingClass("Ngon tuyệt!", 5, 4));
+                            rating.add(new RatingClass("Khá ổn!!", 4, 3));
+                            rating.add(new RatingClass("Bình thường!", 3, 2));
+                            rating.add(new RatingClass("Không ngon!", 2, 1));
+                            rating.add(new RatingClass("Dở tệ!", 1, 0));
+                        }
+                    }
+                });
     }
 
-    public static List<Cart> createCarts() {
-        List<Cart> carts = new ArrayList<>();
-        carts.add(new Cart("Thành Mập 1", "2.3km", createCartItems()));
-        carts.add(new Cart("Thành Mập 1", "2.3km", createCartItems()));
-        carts.add(new Cart("Thành Mập 1", "2.3km", createCartItems()));
-        carts.add(new Cart("Thành Mập 1", "2.3km", createCartItems()));
-        carts.add(new Cart("Thành Mập 1", "2.3km", createCartItems()));
-        return carts;
+    public static String getRatingType(float rate) {
+        for (RatingClass rc : rating) {
+            if (rc.isThisType(rate)) {
+                return rc.getType();
+            }
+        }
+        return "Ngon tuyệt!";
     }
 
-    public static List<CartItem> createCartItems() {
-        List<CartItem> items = new ArrayList<>();
-        items.add(new CartItem("Canh cá Quỳnh Côi", 75000, 1, R.drawable.meal_image));
-        items.add(new CartItem("Canh cá Quỳnh Côi", 150000, 2, R.drawable.meal_10));
-        return items;
-    }
-    public static List<OrderItem> createOrderItems() {
-        List<OrderItem> items = new ArrayList<>();
-        items.add(new OrderItem(new Meal("Cơm Tấm Cây Khế 3 - Nguyễn Văn Khối",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_10), 2, 15000));
-        items.add(new OrderItem(new Meal("Cơm Tấm Cây Khế 3 - Nguyễn Văn Khối",
-                "Món ăn gốc luôn ghi dấu bởi...", "2.3km", "Thành Mập 1", R.drawable.meal_4), 2, 15000));
-        return items;
-    }
-
-    public static List<Order> createAllOrders() {
+    public static List<Order> getAllOrder() {
         List<Order> orders = new ArrayList<>();
-
-        orders.add(new Order("#21", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang đợi", "", R.drawable.shop_7, createOrderItems()));
-        orders.add(new Order("#19", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang đợi", "", R.drawable.shop_6, createOrderItems()));
-        orders.add(new Order("#18", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang đợi", "", R.drawable.shop_5, createOrderItems()));
-
-        orders.add(new Order("#16", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang giao", "", R.drawable.shop_7, createOrderItems()));
-        orders.add(new Order("#15", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang giao", "", R.drawable.shop_6, createOrderItems()));
-        orders.add(new Order("#13", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đang giao", "", R.drawable.shop_5, createOrderItems()));
-
-        orders.add(new Order("#12", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đã giao", "", R.drawable.shop_2, createOrderItems()));
-        orders.add(new Order("#11", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đã giao", "", R.drawable.shop_3, createOrderItems()));
-        orders.add(new Order("#10", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Đã giao", "", R.drawable.shop_8, createOrderItems()));
-
-        orders.add(new Order("#09", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Bạn hủy", "Đặt nhầm", R.drawable.meal_4, createOrderItems()));
-        orders.add(new Order("#07", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Bạn hủy", "Đặt đặt món khác", R.drawable.meal_9, createOrderItems()));
-
-        orders.add(new Order("#06", "Thành Mập 1", "11:41 10/04/2022", "11:41 10/04/2022",
-                "Shop hủy", "Hết nguyên liệu", R.drawable.meal_10, createOrderItems()));
-
         return orders;
     }
 
-    public static List<Notification> createNotifications() {
+    public static List<Meal> getRelatedMeal(Meal meal) {
+        List<Meal> meals = new ArrayList<>();
+        return  meals;
+    }
+
+
+    public static List<Shop> getRelatedShops(Shop shop) {
+        List<Shop> shops = new ArrayList<>();
+        return  shops;
+    }
+
+    public static List<Notification> getNotifications() {
         List<Notification> notifications = new ArrayList<>();
-        notifications.add(new Notification("Đơn hàng #21 của bạn đã hoàn tất",
-                "Cửa hàng đã phê duyệt đơn hàng của bạn. Giá trị đơn " +
-                        "hàng là 150.000đ. Thời gian nhận món: 11:41 10/04/2022.",
-                "1 giờ trước"));
-        notifications.add(new Notification("Mừng khai trường quán Thành Mập 1",
-                "Mừng khai trương, Thành Mập 1 giảm giá 25% cho mọi món " +
-                        "ăn trong cửa hàng. Nhanh tay đặt món nào!",
-                "2 giờ trước"));
-        notifications.add(new Notification("Đơn hàng #20 của bạn đã bị hủy",
-                "Đơn hàng của bạn bị hủy vì: Món ăn đã hết" +
-                        "Quán Thành Mập 1 chân thành cảm ơn!",
-                "12 giờ trước"));
-        notifications.add(new Notification("Bạn được Foody tặng mã code giảm giá",
-                "Cảm ơn bạn đã tin dùng và sử dụng ứng dụng của chúng tôi trong thời gian qua.",
-                "13 giờ trước"));
-        notifications.add(new Notification("Đơn hàng #19 của bạn đã hoàn tất",
-                "Cửa hàng đã phê duyệt đơn hàng của bạn. Giá trị đơn " +
-                        "hàng là 150.000đ. Thời gian nhận món: 11:41 10/04/2022.",
-                "15 giờ trước"));
-        notifications.add(new Notification("Đơn hàng #18 của bạn đã hoàn tất",
-                "Cửa hàng đã phê duyệt đơn hàng của bạn. Giá trị đơn " +
-                        "hàng là 150.000đ. Thời gian nhận món: 11:41 10/04/2022.",
-                "19 giờ trước"));
-        notifications.add(new Notification("Đơn hàng #17 của bạn đã hoàn tất",
-                "Cửa hàng đã phê duyệt đơn hàng của bạn. Giá trị đơn " +
-                        "hàng là 150.000đ. Thời gian nhận món: 11:41 10/04/2022.",
-                "1 ngày trước"));
-        notifications.add(new Notification("Đơn hàng #16 của bạn đã hoàn tất",
-                "Cửa hàng đã phê duyệt đơn hàng của bạn. Giá trị đơn " +
-                        "hàng là 150.000đ. Thời gian nhận món: 11:41 10/04/2022.",
-                "2 ngày trước"));
         return notifications;
     }
 
-    public static List<String> createProvince() {
-        List<String> provinces = new ArrayList<>();
-        provinces.add("Bắc Kạn");
-        provinces.add("Bắc Ninh");
-        provinces.add("Hà Nam");
-        provinces.add("Hải Dương");
-        provinces.add("Hải Phòng");
-        provinces.add("Hưng Yên");
-        provinces.add("Nam Định");
-        provinces.add("Ninh Bình");
-        provinces.add("Thái Bình");
-        provinces.add("An Giang");
-        provinces.add("Vũng Tàu");
-        provinces.add("Bắc Giang");
-        provinces.add("Bạc Liêu");
-        provinces.add("Bến Tre");
-        provinces.add("Bình Định");
-        provinces.add("Bình Dương");
-        provinces.add("Bình Phước");
-        provinces.add("Bình Thuận");
-        provinces.add("Cà Mau");
-        provinces.add("Cần Thơ");
-        provinces.add("Cao Bằng");
-        provinces.add("Đà Nẵng");
-        provinces.add("Đắk Lắk");
-        provinces.add("Đăk Nông");
-        provinces.add("Điện Biên");
-        provinces.add("Đồng Nai");
-        provinces.add("Đồng tháp");
-        provinces.add("Gia Lai");
-        provinces.add("Hà Giang");
-        provinces.add("Hà Nội");
-        provinces.add("Hà Tĩnh");
-        provinces.add("Hòa Bình");
-        provinces.add("Khánh Hòa");
-        provinces.add("Kiên Giang");
-        provinces.add("Kon Tum");
-        provinces.add("Lai Châu");
-        provinces.add("Lâm Đồng");
-        provinces.add("Lạng Sơn");
-        provinces.add("Lào Cai");
-        provinces.add("Long an");
-        provinces.add("Nghệ An");
-        provinces.add("Ninh Thuận");
-        provinces.add("Phú Thọ");
-        provinces.add("Phú Yên");
-        provinces.add("Quảng Bình");
-        provinces.add("Quảng Nam");
-        provinces.add("Quảng Ngãi");
-        provinces.add("Quảng Ninh");
-        provinces.add("Quảng Trị");
-        provinces.add("Sóc Trăng");
-        provinces.add("Sơn La");
-        provinces.add("Tây Ninh");
-        provinces.add("Thái Nguyên");
-        provinces.add("Thanh Hóa");
-        provinces.add("TT. Huế");
-        provinces.add("Tiền Giang");
-        provinces.add("TP. HCM");
-        provinces.add("Trà Vinh");
-        provinces.add("Tuyên Quang");
-        provinces.add("Vĩnh Long");
-        provinces.add("Vĩnh Phúc");
-        provinces.add("Yên Bái");
-        return provinces;
+    public static void getOutstandingMeals(HomeStateFragment adapter) {
+        List<Meal> meals = new ArrayList<>();
+        StorageReference reference = FirebaseStorage.getInstance().getReference();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        CollectionReference shopRef = db.collection("shops");
+        db.collection("meals")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    }
+                })
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            int i = 0;
+                            for (DocumentSnapshot snapshot : task.getResult().getDocuments()) {
+                                final int count = i;
+                                reference.child(snapshot.get("image_src").toString())
+                                        .getBytes(1024 * 1024)
+                                        .addOnCompleteListener(new OnCompleteListener<byte[]>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<byte[]> task) {
+                                                if (task.isSuccessful()) {
+                                                    Meal m = snapshot.toObject(Meal.class);
+                                                    m.setImage(task.getResult());
+                                                    shopRef.document(m.getShop_id())
+                                                            .get()
+                                                            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                                    if (task.isSuccessful()) {
+                                                                        m.setShop(task.getResult().toObject(Shop.class));
+                                                                        meals.add(m);
+                                                                        adapter.setOutstanding(meals);
+                                                                    }
+                                                                }
+                                                            });
+                                                }
+                                            }
+                                        });
+                                i++;
+                            }
+                        }
+                    }
+                });
     }
 
-    public static List<Slider> createSliders() {
-        List<Slider> sliders = new ArrayList<>();
-        sliders.add(new Slider(R.drawable.slider1));
-        sliders.add(new Slider(R.drawable.slider2));
-        sliders.add(new Slider(R.drawable.slider3));
-        return sliders;
+    public static void getNearMeals(HomeStateFragment adapter) {
+        List<Meal> meals = new ArrayList<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        StorageReference reference = FirebaseStorage.getInstance().getReference();
+        CollectionReference shopRef = db.collection("shops");
+        db.collection("meals").orderBy("origin_price")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            int i = 0;
+                            for (DocumentSnapshot snapshot : task.getResult().getDocuments()) {
+                                final int count = i;
+                                reference.child(snapshot.get("image_src").toString())
+                                        .getBytes(1024 * 1024)
+                                        .addOnCompleteListener(new OnCompleteListener<byte[]>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<byte[]> task) {
+                                                if (task.isSuccessful()) {
+                                                    Meal m = snapshot.toObject(Meal.class);
+                                                    m.setImage(task.getResult());
+                                                    shopRef.document(m.getShop_id())
+                                                            .get()
+                                                            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                                    if (task.isSuccessful()) {
+                                                                        m.setShop(task.getResult().toObject(Shop.class));
+                                                                        meals.add(m);
+                                                                        adapter.setNear(meals);
+                                                                    }
+                                                                }
+                                                            });
+                                                }
+                                            }
+                                        });
+                                i++;
+                            }
+                        }
+                    }
+                });
     }
 
-    public static List<Comment> createComments() {
-        List<Comment> comments = new ArrayList<>();
-        comments.add(new Comment("Phan Trung Tín",
-                "11:43 10/04/2020", "Món ăn quá tuyện vời",
-                4F, R.drawable.user_avatar));
-        comments.add(new Comment("Phan Trung Tín",
-                "11:43 10/04/2020", "Món ăn quá tuyện vời",
-                4.5F, R.drawable.user_avatar));
-        comments.add(new Comment("Phan Trung Tín",
-                "11:43 10/04/2020", "Món ăn quá tuyện vời",
-                3.5F, R.drawable.user_avatar));
-        comments.add(new Comment("Phan Trung Tín",
-                "11:43 10/04/2020", "Món ăn quá tuyện vời",
-                5F, R.drawable.user_avatar));
-        comments.add(new Comment("Phan Trung Tín",
-                "11:43 10/04/2020", "Món ăn quá tuyện vời",
-                5F, R.drawable.user_avatar));
-        return comments;
+    public static List<Meal> getSavedMeals() {
+        List<Meal> meals = new ArrayList<>();
+        return meals;
     }
 
-    public static List<Shop> createShops() {
+    public static List<Shop> getSavedShops() {
         List<Shop> shops = new ArrayList<>();
-        shops.add(new Shop("Thành Mập 1 ",
-                "Quán cơm sáng trưa tối bình dân.",
-                "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_image));
-        shops.add(new Shop("Thành Mập 1 ",
-                "Quán cơm sáng trưa tối bình dân.",
-                "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_2));
-        shops.add(new Shop("Thành Mập 1 ",
-                "Quán cơm sáng trưa tối bình dân.",
-                "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_2));
-        shops.add(new Shop("Thành Mập 1 ",
-                "Quán cơm sáng trưa tối bình dân.",
-                "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_7));
-        shops.add(new Shop("Thành Mập 1 ",
-                "Quán cơm sáng trưa tối bình dân.",
-                "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_8));
-        shops.add(new Shop("Thành Mập 1 ",
-                "Quán cơm sáng trưa tối bình dân.",
-                "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_6));
-        shops.add(new Shop("Thành Mập 1 ",
-                "Quán cơm sáng trưa tối bình dân.",
-                "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_4));
         return shops;
     }
 
-    public static Shop getShop() {
-        return new Shop("Thành Mập 1",
-                "Quán cơm sáng trưa tối bình dân.",
-                "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_5);
+    public static List<Cart> getCarts() {
+        List<Cart> carts = new ArrayList<>();
+        return carts;
     }
 
-    public static Shop getShopChain() {
-        return new Shop("Thành Mập",
-                "Quán cơm sáng trưa tối bình dân.",
-                "Địa chỉ: Quận 9, TP. Hồ Chí Minh.", "2.3km",
-                R.drawable.shop_7);
+    public static List<Byte[]> getAllShopsImage() {
+        List<Byte[]> images = new ArrayList<>();
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference reference = storage.getReference();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("shops")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                DocumentSnapshot snapshot;
+                                String id = document.getReference().getId();
+                                StorageReference image = reference.child("shops/" + id + ".png");
+                                image.getBytes(1024 * 1024)
+                                        .addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                                            @Override
+                                            public void onSuccess(byte[] bytes) {
+                                                images.add(Support.toByteArray(bytes));
+                                            }
+                                        });
+                            }
+                        } else {
+
+                        }
+                    }
+                });
+        return images;
+    }
+
+    public static void getSliders(SliderAdapter adapter) {
+        List<Slider> sliders = new ArrayList<>();
+
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference reference = storage.getReference();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("sliders")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot snapshot : task.getResult()) {
+                                String img = snapshot.getData().get("src").toString();
+                                StorageReference image = reference.child(img);
+                                image.getBytes(1024 * 1024)
+                                        .addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                                            @Override
+                                            public void onSuccess(byte[] bytes) {
+                                                sliders.add(new Slider(bytes));
+                                                adapter.setSliders(sliders);
+                                            }
+                                        });
+                            }
+                        }
+                    }
+                });
+    }
+
+    public static List<String> getProvinces(ArrayAdapter<String> adapter) {
+        List<String> provinces = new ArrayList<>();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("provinces").orderBy("name", Query.Direction.ASCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot snapshot : task.getResult()) {
+                                provinces.add(snapshot.getData().get("name").toString());
+                                adapter.add(snapshot.getData().get("name").toString());
+                            }
+                        } else {
+
+                        }
+                    }
+                });
+        return provinces;
+    }
+
+    public static Byte[] toByteArray(byte[] bytes) {
+        int len = bytes.length;
+        Byte[] result = new Byte[len];
+        for (int i = 0; i < len; i++) {
+            result[i] = bytes[i];
+        }
+        return result;
     }
 }
 

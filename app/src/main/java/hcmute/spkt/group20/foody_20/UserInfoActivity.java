@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -124,23 +125,23 @@ public class UserInfoActivity extends AppCompatActivity implements OnMapReadyCal
     }
 
     private void handleCredential(AuthCredential credential) {
-        auth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-                            Toast.makeText(UserInfoActivity.this, R.string.login_success,
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(UserInfoActivity.this, R.string.login_failed,
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+//        auth.signInWithCredential(credential)
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            // Sign in success, update UI with the signed-in user's information
+//                            Log.d(TAG, "signInWithCredential:success");
+//                            Toast.makeText(UserInfoActivity.this, R.string.login_success,
+//                                    Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            // If sign in fails, display a message to the user.
+//                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+//                            Toast.makeText(UserInfoActivity.this, R.string.login_failed,
+//                                    Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
         auth.getCurrentUser().linkWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -191,7 +192,7 @@ public class UserInfoActivity extends AppCompatActivity implements OnMapReadyCal
                 user.setGmail(info.getEmail());
             }
             if (info.getProviderId().equals(getString(R.string.facebook))) {
-//                user.setFacebook(info.get);
+                user.setFacebook(Profile.getCurrentProfile().getId());
             }
             if (info.getProviderId().equals(getString(R.string.phone))) {
                 user.setPhone(info.getPhoneNumber());

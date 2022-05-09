@@ -24,23 +24,24 @@
             android:id="@+id/rb_rating"
             android:layout_marginEnd="16dp"
             android:layout_alignParentRight="true"/>
+
         <TextView
+            android:id="@+id/tv_feel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ngon tuyệt!"
-            android:layout_alignParentRight="true"
             android:layout_below="@+id/rb_rating"
-            android:id="@+id/tv_feel"/>
+            android:layout_alignParentRight="true"
+            android:text="Ngon tuyệt!" />
         <androidx.cardview.widget.CardView
             android:id="@+id/card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="100dp">
+
             <ImageView
                 android:id="@+id/iv_avatar"
                 android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:src="@drawable/user_avatar"/>
+                android:layout_height="45dp" />
         </androidx.cardview.widget.CardView>
 
 

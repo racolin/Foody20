@@ -17,16 +17,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Đơn hàng #21 đã hoàn tất."
-            android:textSize="22sp"
-            android:id="@+id/tv_title"
+            android:textSize="20sp"
+            android:id="@+id/tv_name"
             android:textStyle="bold"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="10dp"
-                android:layout_height="10dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 android:backgroundTint="#3F3F3F"
@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="italic"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:id="@+id/tv_time"
                 android:text="1 giờ trước" />
         </LinearLayout>

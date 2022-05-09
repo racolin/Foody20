@@ -1,55 +1,70 @@
 package hcmute.spkt.group20.foody_20.model;
 
-public class Comment {
-    String name, date, content;
-    float rating;
-    int image;
+import com.google.firebase.firestore.Exclude;
 
-    public Comment(String name, String date, String content, float rating, int image) {
-        this.name = name;
-        this.date = date;
-        this.content = content;
-        this.rating = rating;
-        this.image = image;
+import java.io.Serializable;
+import java.util.Date;
+
+/*OK*/
+
+public class Comment implements Serializable {
+    private User user;//
+    private String uid;
+    private Date time_created;
+    private float rate;
+    private String description;
+
+    public Comment() {
+
     }
 
-    public String getName() {
-        return name;
+    public Comment(User user, Date time_created, float rate, String description) {
+        this.user = user;
+        this.time_created = time_created;
+        this.rate = rate;
+        this.description = description;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getUid() {
+        return user.getUid();
     }
 
-    public String getDate() {
-        return date;
+    public void setUid(String uid) {
+//        load user
+        this.uid = uid;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    @Exclude
+    public User getUser() {
+        return user;
     }
 
-    public String getContent() {
-        return content;
+    @Exclude
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public Date getTime_created() {
+        return time_created;
     }
 
-    public float getRating() {
-        return rating;
+    public void setTime_created(Date time_created) {
+        this.time_created = time_created;
     }
 
-    public void setRating(float rating) {
-        this.rating = rating;
+    public float getRate() {
+        return rate;
     }
 
-    public int getImage() {
-        return image;
+    public void setRate(float rate) {
+        this.rate = rate;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

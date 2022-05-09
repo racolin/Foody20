@@ -1,92 +1,91 @@
 package hcmute.spkt.group20.foody_20.model;
 
+import com.google.firebase.firestore.Exclude;
+
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
-import hcmute.spkt.group20.foody_20.Support;
+/*OK*/
 
-public class Order {
-    private String id;
-    private String title;
-    private String time_end;
-    private String time_start;
+public class Order implements Serializable {
+    private String code;//
+    private String shop_name;//
+    private Date time_end;
+    private Date time_start;
+    private int price;
     private String status;
     private String cause;
-    private int image;
-    List<OrderItem> items;
-
-    public Order(String id, String title, String time_end, String time_start, String status, String cause, int image, List<OrderItem> items) {
-        this.id = id;
-        this.title = title;
-        this.time_end = time_end;
-        this.time_start = time_start;
-        this.status = status;
-        this.cause = cause;
-        this.image = image;
-        this.items = items;
-    }
-
-    public String getPriceCurrency() {
-        int result = 0;
-        for (OrderItem item : items) {
-            result += item.getPrice();
-        }
-        return Support.toCurrency(result);
-    }
+    List<OrderItem> order_items;
 
     public Order() {
 
     }
 
     public Order(Order order) {
-        this.id = order.id;
-        this.title = order.title;
+        this.code = order.code;
+        this.shop_name = order.shop_name;
         this.time_end = order.time_end;
         this.time_start = order.time_start;
+        this.price = order.price;
         this.status = order.status;
         this.cause = order.cause;
-        this.image = order.image;
-        this.items = order.items;
+        this.order_items = order.order_items;
     }
 
-
-    public List<OrderItem> getItems() {
-        return items;
+    public Order(String shop_name, Date time_end, Date time_start, int price,
+                 String status, String cause, List<OrderItem> order_items) {
+        this.shop_name = shop_name;
+        this.time_end = time_end;
+        this.time_start = time_start;
+        this.price = price;
+        this.status = status;
+        this.cause = cause;
+        this.order_items = order_items;
     }
 
-    public void setItems(List<OrderItem> items) {
-        this.items = items;
+    @Exclude
+    public String getShop_name() {
+        return shop_name;
     }
 
-    public String getId() {
-        return id;
+    @Exclude
+    public void setShop_name(String shop_name) {
+        this.shop_name = shop_name;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    @Exclude
+    public String getCode() {
+        return code;
     }
 
-    public String getTitle() {
-        return title;
+    @Exclude
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getTime_end() {
+    public Date getTime_end() {
         return time_end;
     }
 
-    public void setTime_end(String time_end) {
+    public void setTime_end(Date time_end) {
         this.time_end = time_end;
     }
 
-    public String getTime_start() {
+    public Date getTime_start() {
         return time_start;
     }
 
-    public void setTime_start(String time_start) {
+    public void setTime_start(Date time_start) {
         this.time_start = time_start;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public String getStatus() {
@@ -105,11 +104,11 @@ public class Order {
         this.cause = cause;
     }
 
-    public int getImage() {
-        return image;
+    public List<OrderItem> getOrder_items() {
+        return order_items;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setOrder_items(List<OrderItem> order_items) {
+        this.order_items = order_items;
     }
 }

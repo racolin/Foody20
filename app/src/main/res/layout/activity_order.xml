@@ -2,9 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:paddingHorizontal="8dp">
+    android:paddingHorizontal="4dp">
 
     <ScrollView
         android:layout_marginVertical="8dp"
@@ -17,94 +16,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="5dp">
-
-                    <ImageView
-                        android:id="@+id/iv_meal"
-                        android:layout_width="125dp"
-                        android:layout_height="100dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/meal_image" />
-                </androidx.cardview.widget.CardView>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Canh cá Quỳnh Côi"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/order_price"
-                            android:textColor="@color/black"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:text="~70,000đ"
-                            android:textColor="@color/primary_900"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
+            <include layout="@layout/meal_item_cart"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="8dp"
                 android:background="@android:color/darker_gray" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="@string/order_amount"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/et_amount"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:ems="10"
-                    android:gravity="right"
-                    android:inputType="number"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -126,7 +44,6 @@
                     android:layout_weight="3"
                     android:ems="10"
                     android:gravity="right"
-                    android:text="Phan Trung Tín"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -152,64 +69,46 @@
                     android:ems="10"
                     android:gravity="right"
                     android:inputType="number"
-                    android:text="0868754872"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
             </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
-                android:text="@string/order_time"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <RelativeLayout
+                <TextView
+                    android:layout_weight="2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_marginVertical="8dp"
+                    android:text="@string/order_time"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-                    <EditText
+                <RelativeLayout
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/ib_choose_time" />
 
                     <ImageButton
-                        android:backgroundTint="@color/primary_700"
                         android:id="@+id/ib_choose_time"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/ic_schedule" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <EditText
-                        android:layout_width="250dp"
-                        android:layout_height="wrap_content"
-                        android:layout_toLeftOf="@id/ib_choose_date" />
-
-                    <ImageButton
-                        android:backgroundTint="@color/primary_700"
-                        android:id="@+id/ib_choose_date"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:background="@drawable/ic_choose_dob" />
-
+                        android:background="@drawable/ic_schedule"
+                        android:backgroundTint="@color/primary_700" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -244,8 +143,6 @@
         android:text="@string/meal_book"
         android:textAllCaps="false"
         android:textStyle="bold"
-        android:textSize="24sp"
-        android:background="@drawable/background_button"
-        android:id="@+id/btn_order_now"
-        android:layout_marginVertical="2dp"/>
+        android:textSize="20sp"
+        android:id="@+id/btn_order_now"/>
 </RelativeLayout>

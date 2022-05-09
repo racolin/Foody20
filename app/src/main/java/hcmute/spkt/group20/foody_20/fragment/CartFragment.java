@@ -19,13 +19,11 @@ import hcmute.spkt.group20.foody_20.Support;
 import hcmute.spkt.group20.foody_20.adapter.CartAdapter;
 
 public class CartFragment extends Fragment {
-    Context context;
     RecyclerView rv_cart;
     CartAdapter adapter;
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        this.context = context;
     }
 
     @Nullable
@@ -41,7 +39,7 @@ public class CartFragment extends Fragment {
 
             rv_cart.setLayoutManager(new LinearLayoutManager(getContext()));
 
-            adapter = new CartAdapter(context, Support.createCarts());
+            adapter = new CartAdapter(getContext(), Support.getCarts());
 
             rv_cart.setAdapter(adapter);
         }

@@ -10,7 +10,6 @@ android:layout_height="wrap_content">
         android:layout_height="80dp"
         android:id="@+id/iv_meal"
         android:background="@drawable/background_meal"
-        android:src="@drawable/meal_image"
         android:clipToOutline="true"
         android:scaleType="centerCrop"
         />
@@ -25,7 +24,7 @@ android:layout_height="wrap_content">
             android:text="Canh cá Quỳnh Côi"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_name"
             />
         <LinearLayout
             android:layout_marginStart="8dp"
@@ -65,7 +64,7 @@ android:layout_height="wrap_content">
                 android:layout_height="wrap_content"
                 android:text="1"
                 android:textSize="14sp"
-                android:id="@+id/tv_amount"
+                    android:id="@+id/tv_amount"
                 />
         </LinearLayout>
     </LinearLayout>

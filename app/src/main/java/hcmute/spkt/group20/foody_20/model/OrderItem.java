@@ -1,11 +1,19 @@
 package hcmute.spkt.group20.foody_20.model;
 
-import hcmute.spkt.group20.foody_20.Support;
+import com.google.firebase.firestore.Exclude;
 
-public class OrderItem {
-    private Meal meal;
+import java.io.Serializable;
+
+/*OK*/
+public class OrderItem implements Serializable {
+    private Meal meal;//
+    private String meal_id;
     private int amount;
     private int price;
+
+    public OrderItem() {
+
+    }
 
     public OrderItem(Meal meal, int amount, int price) {
         this.meal = meal;
@@ -13,24 +21,13 @@ public class OrderItem {
         this.price = price;
     }
 
-    public Meal getMeal() {
-        return meal;
+    public String getMeal_id() {
+        return meal_id;
     }
 
-    public String getPriceCurrency() {
-        return Support.toCurrency(price);
-    }
-
-    public void setMeal(Meal meal) {
-        this.meal = meal;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setMeal_id(String meal_id) {
+//        Load meal
+        this.meal_id = meal_id;
     }
 
     public int getPrice() {
@@ -40,4 +37,23 @@ public class OrderItem {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    public String getAmount() {
+        return String.valueOf(amount);
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    @Exclude
+    public Meal getMeal() {
+        return meal;
+    }
+
+    @Exclude
+    public void setMeal(Meal meal) {
+        this.meal = meal;
+    }
 }
+

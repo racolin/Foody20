@@ -8,12 +8,18 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -37,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
     NavigationView nv_user;
     MovableFloatingActionButton fab_user;
     FirebaseAuth auth;
-    public static final String TAG = "rrr2";
+    public static final String TAG = HomeActivity.class.getSimpleName();
 
     @Override
     protected void onStart() {
@@ -49,7 +55,56 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+
+        auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() == null) {
+            becomeAnonymous();
+        }
+
+        initUI();
+
+        initListener();
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.fl_content, new HomeFragment());
+        transaction.addToBackStack(HomeFragment.class.getSimpleName());
+        transaction.commit();
+    }
+
+    private void initUI() {
+
+        nb_navigation = findViewById(R.id.nb_navigation);
+
+        View vv = LayoutInflater.from(this).inflate(R.layout.nofitication_number, (BottomNavigationView) nb_navigation.getChildAt(2), false);
+
+        nb_navigation.addView(vv);
+
+        dl_user = findViewById(R.id.dl_user);
+
+        nv_user = findViewById(R.id.nv_user);
+
+        fab_user = findViewById(R.id.fab_user);
+    }
+
+    private void initListener() {
+
+        categoriesEvent();
+
+        navigationEvent();
+
+        fab_user.setOnClickListener(v -> {
+            if (!dl_user.isOpen()) {
+                dl_user.openDrawer(GravityCompat.START);
+            }
+        });
+    }
+
     private void becomeAnonymous() {
+
         auth.signInAnonymously()
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -65,40 +120,8 @@ public class HomeActivity extends AppCompatActivity {
                 });
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        auth = FirebaseAuth.getInstance();
-        if (auth.getCurrentUser() == null) {
-            becomeAnonymous();
-        }
-
-        mapping();
-
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.fl_content, new HomeFragment());
-        transaction.commit();
-
-    }
-
-    public void mapping() {
-        nb_navigation = findViewById(R.id.nb_navigation);
-        categoriesEvent();
-
-        dl_user = findViewById(R.id.dl_user);
-
-        nv_user = findViewById(R.id.nv_user);
-        navigationEvent();
-        fab_user = findViewById(R.id.fab_user);
-
-        fab_user.setOnClickListener(v -> {
-            if (!dl_user.isOpen()) {
-                dl_user.openDrawer(GravityCompat.START);
-            }
-        });    }
-
     public void navigationEvent() {
+
         nv_user.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -110,8 +133,6 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.nv_log_in:
                         dl_user.closeDrawer(GravityCompat.START);
                         login();
-//                        Intent i1 = new Intent(HomeActivity.this, LoginActivity.class);
-//                        loginLauncher.launch(i1);
                         break;
                     case R.id.nv_info:
                         dl_user.closeDrawer(GravityCompat.START);
@@ -185,7 +206,10 @@ public class HomeActivity extends AppCompatActivity {
 
     private void logout() {
         FirebaseAuth.getInstance().signOut();
+        auth.signOut();
+//        Đăng xuất khỏi facebook vì facebook cần phải login thêm
         LoginManager.getInstance().logOut();
+
         Toast.makeText(this, R.string.logout_toast, Toast.LENGTH_SHORT).show();
         becomeAnonymous();
         logoutUpdateUI();
@@ -195,11 +219,13 @@ public class HomeActivity extends AppCompatActivity {
         nb_navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                FragmentManager manager = getSupportFragmentManager();
+//                manager.pop/
+                FragmentTransaction transaction = manager.beginTransaction();
                 switch (item.getItemId()) {
                     case R.id.action_home:
-                        fab_user.show();
-                        transaction.replace(R.id.fl_content, new HomeFragment());
+                        manager.popBackStack();
+                        transaction.addToBackStack(null);
                         break;
                     case R.id.action_notification:
                         transaction.replace(R.id.fl_content, new NotificationFragment());
@@ -230,6 +256,7 @@ public class HomeActivity extends AppCompatActivity {
         if (manager.findFragmentById(R.id.fl_content) instanceof HomeFragment) {
             finish();
         } else {
+//            manager.popBackStack();
             FragmentTransaction transaction = manager.beginTransaction();
             transaction.replace(R.id.fl_content, new HomeFragment());
             transaction.commit();

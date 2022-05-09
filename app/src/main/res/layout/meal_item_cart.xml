@@ -40,15 +40,15 @@
                 android:textSize="16sp"/>
 
             <TextView
-                android:layout_toRightOf="@id/temp"
+                android:id="@+id/tv_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2.3km"
                 android:layout_marginStart="4dp"
-                android:id="@+id/tv_distance"
-                android:textStyle="bold"
+                android:layout_toRightOf="@id/temp"
+                android:text="2.3km"
                 android:textColor="@color/primary_700"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/temp1"
@@ -73,13 +73,13 @@
                 android:textSize="16sp"/>
 
             <Button
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="24dp"
-                android:layout_marginStart="4dp"
                 android:id="@+id/btn_buy_now"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginStart="4dp"
+                android:layout_marginRight="24dp"
                 android:insetTop="8dp"
                 android:insetBottom="8dp"
                 android:text="@string/meal_book"

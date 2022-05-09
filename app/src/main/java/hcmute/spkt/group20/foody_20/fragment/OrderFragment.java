@@ -34,7 +34,7 @@ public class OrderFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
-        this.allOrder = Support.createAllOrders();
+        this.allOrder = Support.getAllOrder();
     }
 
     @Nullable

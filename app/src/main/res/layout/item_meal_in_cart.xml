@@ -9,8 +9,6 @@
     android:layout_width="100dp"
     android:layout_height="80dp"
     android:id="@+id/iv_meal"
-    android:background="@drawable/background_meal"
-    android:src="@drawable/meal_image"
     android:clipToOutline="true"
     android:scaleType="centerCrop"
         />
@@ -26,7 +24,7 @@
             android:text="Canh cá Quỳnh Côi"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_name"
             />
         <LinearLayout
             android:layout_width="match_parent"

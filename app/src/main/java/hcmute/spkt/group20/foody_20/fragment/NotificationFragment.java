@@ -41,7 +41,7 @@ public class NotificationFragment extends Fragment {
 
             rv_notification = v.findViewById(R.id.rv_notification);
 
-            adapter = new NotificationAdapter(getContext(), Support.createNotifications());
+            adapter = new NotificationAdapter(getContext(), Support.getNotifications());
 
             rv_notification.setLayoutManager(new LinearLayoutManager(getContext()));
 

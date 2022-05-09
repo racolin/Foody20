@@ -5,14 +5,14 @@
     <string name="fb_login_protocol_scheme">fb548423553308740</string>
     <string name="facebook_client_token">3b7dc275d8e5c215b37c62bb52649253</string>
 
-<!--    Login Activity -->
+    <!--    Login Activity -->
     <string name="login_title">Truy cập Foody ngay!</string>
     <string name="login_phone">Đăng nhập với số điện thoại</string>
     <string name="login_facebook">Đăng nhập với Facebook</string>
     <string name="login_google">Đăng nhập với Google</string>
-<!--    Login Activity -->
+    <!--    Login Activity -->
 
-<!--    Meal Activity -->
+    <!--    Meal Activity -->
     <string name="meal_comment">Bình luận</string>
     <string name="meal_save">Lưu lại</string>
     <string name="meal_share">Chia sẻ</string>
@@ -27,9 +27,9 @@
     <string name="meal_post_comment">Đăng tải</string>
     <string name="meal_relate">Món ăn liên quan</string>
     <string name="meal_book">Đặt ngay</string>
-<!--    Meal Activity -->
+    <!--    Meal Activity -->
 
-<!--    Order Activity -->
+    <!--    Order Activity -->
     <string name="order_price">Giá:</string>
     <string name="order_id">Đơn hàng</string>
     <string name="order_distance">Khoảng cách:</string>
@@ -40,57 +40,57 @@
     <string name="order_time">Nhận hàng:</string>
     <string name="order_address">Địa chỉ nhận:</string>
     <string name="order_cancel">Hủy đơn</string>
-<!--    Order Activity -->
+    <!--    Order Activity -->
 
-<!--    Shop Activity -->
+    <!--    Shop Activity -->
     <string name="shop_chain">Chuỗi cửa hàng:</string>
     <string name="shop_rate">Thống kê từ các món ăn:</string>
     <string name="shop_description">Mô tả cửa hàng:</string>
     <string name="shop_list">Danh sách món ăn</string>
     <string name="shop_relate">Cửa hàng liên quan</string>
-<!--    Shop Activity -->
+    <!--    Shop Activity -->
 
     <!--    Shop Chain Activity -->
     <string name="chain_rate">Thống kê từ các cửa hàng:</string>
     <string name="chain_shop_count">Số cửa hàng:</string>
     <string name="chain_description">Mô tả chuỗi cửa hàng:</string>
     <string name="chain_list">Danh sách cửa hàng</string>
-<!--    Shop Chain Activity -->
-<!--    User Activity -->
+    <!--    Shop Chain Activity -->
+    <!--    User Activity -->
     <string name="user_update">Cập nhật</string>
-<!--    User Activity -->
-<!--    Verify Activity -->
+    <!--    User Activity -->
+    <!--    Verify Activity -->
     <string name="verify_phone">Nhập số điện thoại đăng ký:</string>
     <string name="verify_opt">Gửi OTP</string>
     <string name="verify_none">Không nhận được OTP? Gửi lại.</string>
     <string name="verify_confirm">Xác nhận</string>
-<!--    Verify Activity -->
-<!--    Contact Activity -->
+    <!--    Verify Activity -->
+    <!--    Contact Activity -->
     <string name="contact_title">Thông tin liên lạc</string>
     <string name="contact_shop">Cửa hàng:</string>
     <string name="contact_phone">Số điện thoại:</string>
     <string name="contact_address">Địa chỉ:</string>
     <string name="contact_submit">OK</string>
-<!--    Contact Activity -->
-<!--    Home Fragment -->
+    <!--    Contact Activity -->
+    <!--    Home Fragment -->
     <string name="home_search">Tìm món ăn, cửa hàng</string>
-<!--    Home Fragment -->
+    <!--    Home Fragment -->
 
-<!--    Meal Item -->
+    <!--    Meal Item -->
     <string name="time_pick">Đặt món:</string>
     <string name="status">Trạng thái:</string>
     <string name="cause">Nguyên nhân:</string>
-<!--    Meal Item -->
+    <!--    Meal Item -->
 
 
-<!--    Error -->
+    <!--    Error -->
     <string name="error">Có lỗi đã xảy ra&#160;</string>
     <string name="login_need">Cần phải đăng nhập&#160;</string>
     <string name="no_data">Chưa có dữ liệu&#160;</string>
     <string name="facebook_login_need">Đăng nhập Facebook trước&#160;</string>
-<!--    Error -->
+    <!--    Error -->
 
-<!--    Login -->
+    <!--    Login -->
     <string name="phone_number_lable">Số điện thoại:</string>
     <string name="gmail_lable">Gmail:</string>
     <string name="facebook_lable">Facebook:</string>
@@ -106,7 +106,7 @@
     <string name="saved_head">Đã lưu</string>
     <string name="order_head">Đơn hàng</string>
     <string name="user_head">Tài khoản</string>
-<!--    Login -->
+    <!--    Login -->
 
     <string name="outstanding">Nổi bật</string>
     <string name="near_me">Gần tôi</string>
@@ -150,7 +150,7 @@
     <string name="facebook">facebook.com</string>
     <string name="phone">phone</string>
 
-<!--    Rule Activity -->
+    <!--    Rule Activity -->
     <string name="rule_title">Chính sách của Foody</string>
     <string name="transport_title">
         Hình thức vận chuyển
@@ -186,5 +186,5 @@
     <string name="calculate_6">
         Lớn hơn 10km: Giá vận chuyển là 30.000đvà tăng 5.000đ với mỗi km sau 10km.
     </string>
-<!--    Rule Activity -->
+    <!--    Rule Activity -->
 </resources>

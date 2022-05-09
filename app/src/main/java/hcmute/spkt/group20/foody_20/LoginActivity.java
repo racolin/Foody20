@@ -20,6 +20,7 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.Profile;
 import com.facebook.login.Login;
 import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginFragment;
@@ -55,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
 
-    public static final String TAG = "rrrl";
+    public static final String TAG = LoginActivity.class.getSimpleName();
 
 
     ActivityResultLauncher<Intent> ggLauncher = registerForActivityResult(
@@ -104,6 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         googleSignInClient = GoogleSignIn.getClient(this, gso);
+
         // login google
 
         //  login facebook
@@ -212,6 +214,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginSuccess() {
+        Log.d("rrr", Profile.getCurrentProfile().getLinkUri().getPath());
         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
         startActivity(intent);
         finish();

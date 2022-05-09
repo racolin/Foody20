@@ -1,9 +1,22 @@
 package hcmute.spkt.group20.foody_20.model;
 
-public class Notification {
+import java.io.Serializable;
+import java.util.Date;
+
+public class Notification implements Serializable {
     private String title;
     private String description;
-    private String time;
+    private Date time_created;
+
+    public Notification() {
+
+    }
+
+    public Notification(String title, String description, Date time_created) {
+        this.title = title;
+        this.description = description;
+        this.time_created = time_created;
+    }
 
     public String getTitle() {
         return title;
@@ -21,21 +34,11 @@ public class Notification {
         this.description = description;
     }
 
-    public String getTime() {
-        return time;
+    public Date getTime_created() {
+        return time_created;
     }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public Notification(String title, String description, String time) {
-        this.title = title;
-        this.description = description;
-        this.time = time;
-    }
-
-    public Notification() {
-
+    public void setTime_created(Date time_created) {
+        this.time_created = time_created;
     }
 }

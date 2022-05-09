@@ -1,5 +1,7 @@
 package hcmute.spkt.group20.foody_20.adapter;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,11 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderHold
         this.sliders = sliders;
     }
 
+    public void setSliders(List<Slider> sliders) {
+        this.sliders = sliders;
+        this.notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public SliderHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -30,7 +37,9 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderHold
 
     @Override
     public void onBindViewHolder(@NonNull SliderHolder holder, int position) {
-        holder.iv_slider.setImageResource(sliders.get(position).getId());
+        byte[] bytes = sliders.get(position).getImage();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        holder.iv_slider.setImageBitmap(bitmap);
     }
 
     @Override

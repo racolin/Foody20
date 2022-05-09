@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="4dp">
+    android:layout_margin="4dp">
     <LinearLayout
         android:paddingHorizontal="8dp"
         android:paddingVertical="8dp"
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:text="Thành Mập 1"
                 android:textSize="16sp"
-                android:id="@+id/tv_shop"
+                android:id="@+id/tv_shop_name"
                 />
         </LinearLayout>
         <LinearLayout

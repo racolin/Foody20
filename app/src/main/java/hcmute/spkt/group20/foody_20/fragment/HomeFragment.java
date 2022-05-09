@@ -3,11 +3,14 @@ package hcmute.spkt.group20.foody_20.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,21 +20,34 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import hcmute.spkt.group20.foody_20.R;
 import hcmute.spkt.group20.foody_20.Support;
 import hcmute.spkt.group20.foody_20.adapter.SliderAdapter;
+import hcmute.spkt.group20.foody_20.model.Meal;
+import hcmute.spkt.group20.foody_20.model.Slider;
 import hcmute.spkt.group20.foody_20.state_fragment.HomeStateFragment;
 
 public class HomeFragment extends Fragment {
 
-    Context context;
+    List<Meal> near, outstanding;
+    ImageView iv_search;
     ViewPager2 vp2_home;
     TabLayout tl_tab;
     ViewPager2 vp2_slider;
-    Handler handler;
-    SliderAdapter adapter;
+    SliderAdapter adapterSlider;
+    HomeStateFragment homeStateFragment;
+
+    public HomeFragment() {
+
+    }
+
+    public HomeFragment(List<Slider> sliders) {
+        this.adapterSlider = new SliderAdapter(sliders);
+    }
+
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -46,7 +62,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        this.context = context;
+        near = new ArrayList<>();
+        outstanding = new ArrayList<>();
     }
 
     @Nullable
@@ -54,8 +71,15 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         vp2_slider = view.findViewById(R.id.vp2_slider);
-        adapter = new SliderAdapter(Support.createSliders());
-        vp2_slider.setAdapter(adapter);
+        iv_search = view.findViewById(R.id.iv_search);
+        iv_search.setOnClickListener(v -> {
+            Toast.makeText(getContext(), "Sự kiện tìm kiếm", Toast.LENGTH_SHORT).show();
+        });
+        List<Slider> sliders = new ArrayList<>();
+        adapterSlider = new SliderAdapter(sliders);
+        Support.getSliders(adapterSlider);
+
+        vp2_slider.setAdapter(adapterSlider);
         Handler handler = new Handler();
         vp2_slider.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -67,7 +91,8 @@ public class HomeFragment extends Fragment {
         });
 
         vp2_home = view.findViewById(R.id.vp2_home);
-        vp2_home.setAdapter(new HomeStateFragment(getActivity()));
+        homeStateFragment = new HomeStateFragment(getActivity(), near, outstanding);
+        vp2_home.setAdapter(homeStateFragment);
         tl_tab = view.findViewById(R.id.tl_tab);
 
         new TabLayoutMediator(tl_tab, vp2_home, new TabLayoutMediator.TabConfigurationStrategy() {
@@ -75,20 +100,23 @@ public class HomeFragment extends Fragment {
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 switch (position) {
                     case 0:
+                        Support.getOutstandingMeals(homeStateFragment);
                         tab.setText(R.string.outstanding);
                         break;
                     case 1:
+                        Support.getNearMeals(homeStateFragment);
                         tab.setText(R.string.near_me);
                         break;
                 }
             }
         }).attach();
 
-        List<String> provinces = Support.createProvince();
         Spinner sp_provinces = view.findViewById(R.id.sp_provinces);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.province_selected, R.id.tv_province, provinces);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.province_selected, R.id.tv_province, new ArrayList<>());
         sp_provinces.setAdapter(adapter);
-        sp_provinces.setSelection(56);
+
+        Support.getProvinces(adapter);
+
         adapter.setDropDownViewResource(R.layout.province_dropdown);
 
         return view;

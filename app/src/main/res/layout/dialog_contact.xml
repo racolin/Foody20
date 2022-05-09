@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:orientation="vertical"
     android:layout_height="wrap_content"
     android:padding="8dp">
@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_name"
             android:textSize="24sp"
             android:text="@string/contact_title"
             android:textColor="@color/primary_700"
@@ -40,21 +40,22 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
+
         <TextView
-            android:layout_marginVertical="4dp"
+            android:id="@+id/tv_shop_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thành Mập 1"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:id="@+id/tv_shop"
+            android:layout_marginVertical="4dp"
             android:layout_marginStart="4dp"
-            android:layout_toRightOf="@id/tv_shop_temp"/>
+            android:layout_toRightOf="@id/tv_shop_temp"
+            android:text="Thành Mập 1"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_marginVertical="4dp"
-            android:layout_below="@id/tv_shop"
+            android:layout_below="@id/tv_shop_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_phone_temp"
@@ -80,23 +81,24 @@
             android:layout_below="@id/tv_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_address_temp"
+            android:id="@+id/tv_address_label"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:text="@string/contact_address"/>
+
         <TextView
-            android:layout_marginVertical="4dp"
+            android:id="@+id/tv_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="KTX khu B, Đại học Quốc Gia TP.HCM"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:id="@+id/tv_address"
-            android:layout_marginStart="4dp"
             android:layout_below="@id/tv_phone_temp"
-            android:layout_toRightOf="@id/tv_address_temp"/>
+            android:layout_marginVertical="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_toRightOf="@id/tv_address_label"
+            android:text="KTX khu B, Đại học Quốc Gia TP.HCM"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
         <fragment
             android:layout_marginVertical="4dp"
             android:layout_below="@id/tv_address"
@@ -120,7 +122,7 @@
             android:id="@+id/btn_ok"
             android:textColor="@color/white"
             android:text="@string/contact_submit"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
