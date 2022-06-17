@@ -49,6 +49,7 @@
             android:layout_marginStart="4dp"
             android:layout_toRightOf="@id/tv_shop_temp"
             android:text="Thành Mập 1"
+            android:maxLength="30"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -63,22 +64,23 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:text="@string/contact_phone"/>
+
         <TextView
-            android:layout_marginVertical="4dp"
+            android:id="@+id/et_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0868754872"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:id="@+id/tv_phone"
-            android:layout_marginStart="4dp"
             android:layout_below="@id/tv_shop_temp"
-            android:layout_toRightOf="@id/tv_phone_temp"/>
+            android:layout_marginVertical="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_toRightOf="@id/tv_phone_temp"
+            android:text="0868754872"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_marginVertical="4dp"
-            android:layout_below="@id/tv_phone"
+            android:layout_below="@id/et_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_address_label"
@@ -88,7 +90,7 @@
             android:text="@string/contact_address"/>
 
         <TextView
-            android:id="@+id/tv_address"
+            android:id="@+id/et_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_phone_temp"
@@ -98,10 +100,11 @@
             android:text="KTX khu B, Đại học Quốc Gia TP.HCM"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:maxLength="35"
             android:textStyle="bold" />
         <fragment
             android:layout_marginVertical="4dp"
-            android:layout_below="@id/tv_address"
+            android:layout_below="@id/et_address"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:id="@+id/fm_map"

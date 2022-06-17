@@ -1,7 +1,5 @@
 package hcmute.spkt.group20.foody_20.state_fragment;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -24,15 +22,17 @@ public class HomeStateFragment extends FragmentStateAdapter {
         outstandingFragment = new MealFragment(outstanding);
     }
 
+    public void search() {
+
+    }
+
     public void setNear(List<Meal> near) {
         this.near = near;
-        Log.d("rrr", "near");
         nearFragment.updateData(near);
     }
 
     public void setOutstanding(List<Meal> outstanding) {
         this.outstanding = outstanding;
-        Log.d("rrr", "outstanding");
         outstandingFragment.updateData(outstanding);
     }
 

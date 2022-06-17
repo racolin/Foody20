@@ -16,13 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import hcmute.spkt.group20.foody_20.HomeActivity;
-import hcmute.spkt.group20.foody_20.MealActivity;
 import hcmute.spkt.group20.foody_20.R;
 import hcmute.spkt.group20.foody_20.ShopActivity;
 import hcmute.spkt.group20.foody_20.ShopChainActivity;
-import hcmute.spkt.group20.foody_20.Support;
+import hcmute.spkt.group20.foody_20.dao.ShopChainDao;
 import hcmute.spkt.group20.foody_20.model.Shop;
-import hcmute.spkt.group20.foody_20.model.ShopChain;
 
 public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
     List<Shop> shops;
@@ -47,14 +45,14 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ShopHolder holder, int position) {
-        holder.iv_shop.setImageBitmap(Support.convertBitmap(shops.get(position).getImage()));
+        holder.iv_shop.setImageResource(shops.get(position).getImage());
         holder.tv_name.setText(shops.get(position).getName());
         holder.tv_description.setText(shops.get(position).getDescription());
         holder.tv_distance.setText(shops.get(position).getDistance());
-        holder.tv_rated.setText(String.valueOf(shops.get(position).getRated()));
+        holder.tv_rated.setText(String.valueOf(4));
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ShopChainActivity.class);
-            intent.putExtra("shop", shops.get(position));
+            intent.putExtra("shop_chain", ShopChainDao.getShopChainById(context, shops.get(position).getShop_chain_id()));
             (context).startActivity(intent);
         });
     }

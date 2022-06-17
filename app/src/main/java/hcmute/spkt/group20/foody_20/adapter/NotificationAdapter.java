@@ -18,7 +18,7 @@ import hcmute.spkt.group20.foody_20.model.Notification;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationHolder> {
 
-    Context context;
+    Context context = null;
     List<Notification> notifications;
 
     public NotificationAdapter(Context context , List<Notification> notifications) {
@@ -38,9 +38,16 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public void onBindViewHolder(@NonNull NotificationHolder holder, int position) {
         holder.tv_time.setText(Support.toDateString(
                 notifications.get(position).
-                        getTime_created(), "mm:hh dd/MM/yyyy"));
+                        getTime_created(), "HH:mm dd/MM/yyyy"));
         holder.tv_title.setText(notifications.get(position).getTitle());
         holder.tv_description.setText(notifications.get(position).getDescription());
+    }
+
+    public void update(List<Notification> notifications) {
+        if (context != null) {
+            this.notifications = notifications;
+            notifyDataSetChanged();
+        }
     }
 
     @Override

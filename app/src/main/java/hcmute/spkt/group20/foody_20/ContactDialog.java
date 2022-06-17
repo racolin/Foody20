@@ -16,8 +16,7 @@ public class ContactDialog extends AppCompatActivity {
         setContentView(R.layout.dialog_contact);
         Shop shop = (Shop) getIntent().getSerializableExtra("shop");
         ((TextView) findViewById(R.id.tv_shop_name)).setText(shop.getName());
-        ((TextView) findViewById(R.id.tv_phone)).setText(shop.getPhone_number());
-        ((TextView) findViewById(R.id.tv_address)).setText(shop.getAddress());
+        ((TextView) findViewById(R.id.et_address)).setText(shop.getAddress());
         ((Button) findViewById(R.id.btn_ok)).setOnClickListener(v -> {
             finish();
         });

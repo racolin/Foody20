@@ -1,13 +1,14 @@
 package hcmute.spkt.group20.foody_20.model;
 
-import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
 
 /*OK*/
 public class OrderItem implements Serializable {
-    private Meal meal;//
-    private String meal_id;
+
+    private int id;
+    private int order_id;
+    private int meal_id;
     private int amount;
     private int price;
 
@@ -15,19 +16,44 @@ public class OrderItem implements Serializable {
 
     }
 
-    public OrderItem(Meal meal, int amount, int price) {
-        this.meal = meal;
+    public OrderItem(int id, int order_id, int meal_id, int amount, int price) {
+        this.id = id;
+        this.order_id = order_id;
+        this.meal_id = meal_id;
         this.amount = amount;
         this.price = price;
     }
 
-    public String getMeal_id() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    public int getMeal_id() {
         return meal_id;
     }
 
-    public void setMeal_id(String meal_id) {
-//        Load meal
+    public void setMeal_id(int meal_id) {
         this.meal_id = meal_id;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     public int getPrice() {
@@ -38,22 +64,8 @@ public class OrderItem implements Serializable {
         this.price = price;
     }
 
-    public String getAmount() {
-        return String.valueOf(amount);
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    @Exclude
-    public Meal getMeal() {
-        return meal;
-    }
-
-    @Exclude
-    public void setMeal(Meal meal) {
-        this.meal = meal;
+    public String toSaveString() {
+        return String.format("INSERT INTO order_item VALUES(null, %d, %d, %d, %d)",order_id, meal_id, amount, price);
     }
 }
 

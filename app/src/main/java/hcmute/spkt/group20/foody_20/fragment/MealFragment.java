@@ -17,7 +17,9 @@ import java.util.List;
 
 import hcmute.spkt.group20.foody_20.R;
 import hcmute.spkt.group20.foody_20.adapter.MealAdapter;
+import hcmute.spkt.group20.foody_20.dao.ShopDao;
 import hcmute.spkt.group20.foody_20.model.Meal;
+import hcmute.spkt.group20.foody_20.model.Shop;
 
 public class MealFragment extends Fragment {
     List<Meal> meals;
@@ -34,7 +36,6 @@ public class MealFragment extends Fragment {
 
     public void updateData(List<Meal> meals) {
         this.meals = meals;
-        Log.d("rrrrraa", adapter == null ? "null" : "not null");
         if (adapter != null) {
             adapter.update(meals);
         }
@@ -44,7 +45,6 @@ public class MealFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_meals, container, false);
-        Log.d("rrrrraaa", "init");
         adapter = new MealAdapter(getActivity(), meals);
         rv_2_items = view.findViewById(R.id.rv_2_items);
         rv_2_items.setAdapter(adapter);

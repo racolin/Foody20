@@ -14,6 +14,8 @@ import java.util.List;
 
 import hcmute.spkt.group20.foody_20.R;
 import hcmute.spkt.group20.foody_20.Support;
+import hcmute.spkt.group20.foody_20.dao.MealDao;
+import hcmute.spkt.group20.foody_20.model.Meal;
 import hcmute.spkt.group20.foody_20.model.OrderItem;
 
 public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.OrderAllItemHolder> {
@@ -35,10 +37,11 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
 
     @Override
     public void onBindViewHolder(@NonNull OrderAllItemHolder holder, int position) {
-        holder.tv_title.setText(items.get(position).getMeal().getName());
+        Meal meal = MealDao.getMealById(context, items.get(position).getMeal_id());
+        holder.tv_title.setText(meal.getName());
         holder.tv_amount.setText(String.valueOf(items.get(position).getAmount()));
-        holder.tv_price.setText(items.get(position).getMeal().getPrice());
-        holder.iv_meal.setImageBitmap(Support.convertBitmap(items.get(position).getMeal().getImage()));
+        holder.tv_price.setText(Support.toCurrency(meal.getPrice()));
+        holder.iv_meal.setImageResource(meal.getImage());
     }
 
     @Override

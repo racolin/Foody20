@@ -49,18 +49,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/card"
+        android:maxLength="22"
         android:text="Canh cá Quỳnh Côi"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold" />
+
     <TextView
-        android:layout_below="@id/tv_name"
+        android:id="@+id/tv_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tv_name"
+        android:maxLength="32"
         android:text="Món ăn gốc luôn ghi dấu bởi..."
-        android:textSize="10sp"
-        android:id="@+id/tv_description"
-        />
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/tv_distance"

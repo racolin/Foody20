@@ -14,7 +14,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/ib_avatar"
+            android:id="@+id/iv_avatar"
             android:scaleType="centerCrop"/>
     </androidx.cardview.widget.CardView>
 
@@ -22,13 +22,14 @@
         android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_username"
+        android:id="@+id/tv_name"
         android:textSize="22sp"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:text="Phan Trung Tín"/>
 
     <LinearLayout
+        android:id="@+id/ll_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -51,6 +52,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -73,6 +75,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">

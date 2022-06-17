@@ -41,6 +41,7 @@
 
                         <EditText
                             android:layout_width="0dp"
+                            android:id="@+id/et_search"
                             android:layout_height="match_parent"
                             android:layout_marginStart="4dp"
                             android:layout_weight="14"

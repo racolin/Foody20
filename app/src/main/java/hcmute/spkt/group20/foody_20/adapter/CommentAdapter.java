@@ -1,5 +1,6 @@
 package hcmute.spkt.group20.foody_20.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +15,18 @@ import java.util.List;
 
 import hcmute.spkt.group20.foody_20.R;
 import hcmute.spkt.group20.foody_20.Support;
+import hcmute.spkt.group20.foody_20.dao.UserDao;
 import hcmute.spkt.group20.foody_20.model.Comment;
+import hcmute.spkt.group20.foody_20.model.User;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentHolder>{
 
     List<Comment> comments;
+    Context context;
 
-    public CommentAdapter(List<Comment> comments) {
+    public CommentAdapter(Context context, List<Comment> comments) {
         this.comments = comments;
+        this.context = context;
     }
 
     @NonNull
@@ -32,19 +37,25 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentH
         return new CommentHolder(view);
     }
 
+    public void update(List<Comment> comments) {
+        this.comments = comments;
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(@NonNull CommentHolder holder, int position) {
-        holder.iv_avatar.setImageBitmap(Support.convertBitmap(comments.get(position).getUser().getImage()));
-        holder.tv_time.setText(Support.toDateString(comments.get(position).getTime_created(), "mm:hh dd/MM/yyyy"));
-        holder.tv_comment_content.setText(comments.get(position).getDescription());
+        User user = UserDao.getUserById(context, comments.get(position).getUser_id());
+        holder.iv_avatar.setImageResource(user.getImage());
+        holder.tv_time.setText(Support.toDateString(comments.get(position).getTime_created(), "HH:mm dd/MM/yyyy"));
+        holder.tv_comment_content.setText(comments.get(position).getContent());
         holder.rb_rating.setRating(comments.get(position).getRate());
-        holder.tv_name.setText(comments.get(position).getUser().getFullname());
-        holder.tv_feel.setText(Support.getRatingType(comments.get(position).getRate()));
+        holder.tv_name.setText(user.getFull_name());
+        holder.tv_feel.setText(Support.getTypeRate(comments.get(position).getRate()));
     }
 
     @Override
     public int getItemCount() {
-        return comments.size();
+        return comments == null ? 0 :comments.size();
     }
 
     public class CommentHolder extends RecyclerView.ViewHolder {

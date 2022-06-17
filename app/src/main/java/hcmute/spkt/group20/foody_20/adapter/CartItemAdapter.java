@@ -13,17 +13,38 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import hcmute.spkt.group20.foody_20.OrderActivity;
 import hcmute.spkt.group20.foody_20.R;
 import hcmute.spkt.group20.foody_20.Support;
-import hcmute.spkt.group20.foody_20.model.OrderItem;
+import hcmute.spkt.group20.foody_20.dao.CartDao;
+import hcmute.spkt.group20.foody_20.dao.CartItemDAO;
+import hcmute.spkt.group20.foody_20.dao.MealDao;
+import hcmute.spkt.group20.foody_20.model.CartItem;
+import hcmute.spkt.group20.foody_20.model.Meal;
 
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartItemHolder> {
     Context context;
-    List<OrderItem> items;
+    List<CartItem> cart_items;
+    CartAdapter adapter;
+    OrderActivity orderActivity;
+    int i = -1;
 
-    public CartItemAdapter(Context context, List<OrderItem> items) {
-        this.items = items;
+    public CartItemAdapter(Context context, List<CartItem> cart_items) {
+        this.cart_items = cart_items;
         this.context = context;
+    }
+
+    public CartItemAdapter(CartAdapter adapter, int i, Context context, List<CartItem> cart_items) {
+        this.cart_items = cart_items;
+        this.context = context;
+        this.adapter = adapter;
+        this.i = i;
+    }
+
+    public CartItemAdapter(OrderActivity orderActivity, Context context, List<CartItem> cart_items) {
+        this.cart_items = cart_items;
+        this.context = context;
+        this.orderActivity = orderActivity;
     }
 
     @NonNull
@@ -36,30 +57,46 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
 
     @Override
     public void onBindViewHolder(@NonNull CartItemHolder holder, int position) {
-        holder.iv_meal.setImageBitmap(Support.convertBitmap(items.get(position).getMeal().getImage()));
-        holder.tv_name.setText(items.get(position).getMeal().getName());
-        holder.tv_price.setText(Support.toCurrency(items.get(position).getMeal().getPrice()));
-        holder.tv_amount.setText(items.get(position).getAmount());
+        Meal meal = MealDao.getMealById(context, cart_items.get(position).getMeal_id());
+        holder.iv_meal.setImageResource( meal.getImage());
+        holder.tv_name.setText(meal.getName());
+        holder.tv_price.setText(Support.toCurrency(meal.getPrice() * cart_items.get(position).getAmount()));
+        holder.tv_amount.setText(String.valueOf(cart_items.get(position).getAmount()));
         holder.ib_inc.setOnClickListener(v -> {
-            holder.tv_amount.setText(
-                    String.valueOf(Integer.valueOf(holder.tv_amount.getText().toString()) + 1)
-            );
+            int r = cart_items.get(position).getAmount() + 1;
+            cart_items.get(position).setAmount(r);
+            CartItemDAO.update(context, cart_items.get(position));
+            if (i != -1) {
+                adapter.updateTotalPrice(i);
+            } else {
+                orderActivity.updateTotalPrice();
+            }
         });
         holder.ib_dec.setOnClickListener(v -> {
-            int r = Integer.valueOf(holder.tv_amount.getText().toString());
-            holder.tv_amount.setText(
-                    String.valueOf( r == 0 ? 0 : r - 1)
-            );
+            int r = cart_items.get(position).getAmount();
+            r = r > 1 ? r - 1 : 1;
+            cart_items.get(position).setAmount(r);
+            CartItemDAO.update(context, cart_items.get(position));
+            if (i != -1) {
+                adapter.updateTotalPrice(i);
+            } else {
+                orderActivity.updateTotalPrice();
+            }
         });
         holder.ib_delete.setOnClickListener(v -> {
-            items.remove(position);
-            notifyItemRemoved(position);
+            CartItemDAO.delete(context, cart_items.get(position));
+            cart_items.remove(position);
+            if (i != -1) {
+                adapter.updateTotalPrice(i);
+            } else {
+                orderActivity.updateTotalPrice();
+            }
         });
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return cart_items.size();
     }
 
     protected class CartItemHolder extends RecyclerView.ViewHolder {

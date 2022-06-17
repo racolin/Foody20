@@ -1,6 +1,7 @@
 package hcmute.spkt.group20.foody_20.fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,14 +14,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import hcmute.spkt.group20.foody_20.R;
 import hcmute.spkt.group20.foody_20.Support;
+import hcmute.spkt.group20.foody_20.adapter.NotificationAdapter;
 import hcmute.spkt.group20.foody_20.adapter.OrderAdapter;
+import hcmute.spkt.group20.foody_20.dao.NotificationDao;
+import hcmute.spkt.group20.foody_20.dao.OrderDao;
 import hcmute.spkt.group20.foody_20.model.Order;
 
 public class OrderFragment extends Fragment {
@@ -29,12 +32,32 @@ public class OrderFragment extends Fragment {
     List<Order> allOrder;
     RadioButton rd_all, rd_wait, rd_delivered,
             rd_delivering, rd_you_cancel, rd_shop_cancel;
+    OrderAdapter adapter = null;
+    int user_id;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
-        this.allOrder = Support.getAllOrder();
+        SharedPreferences preferences = getContext().getSharedPreferences("login", Context.MODE_PRIVATE);
+
+        user_id = preferences.getInt("user_id", -1);
+
+        if (user_id == -1) {
+            this.allOrder = new ArrayList<>();
+        } else {
+            this.allOrder = OrderDao.getOrdersByUserId(context ,user_id);
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        SharedPreferences preferences = getContext().getSharedPreferences("login", Context.MODE_PRIVATE);
+        user_id = preferences.getInt("user_id", -1);
+        if (user_id != -1 && adapter != null) {
+            adapter.update(OrderDao.getOrdersByUserId(getContext(), user_id));
+        }
     }
 
     @Nullable
@@ -42,13 +65,16 @@ public class OrderFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View v = null;
-        if (FirebaseAuth.getInstance().getCurrentUser().isAnonymous()) {
+        SharedPreferences preferences = getActivity().getSharedPreferences("login", Context.MODE_PRIVATE);
+        int user_id = preferences.getInt("user_id", -1);
+        if (user_id == -1) {
             v = inflater.inflate(R.layout.none_login, container, false);
         } else {
             v = inflater.inflate(R.layout.fragment_order, container, false);
             mapping(v);
             rv_orders = v.findViewById(R.id.rv_orders);
-            rv_orders.setAdapter(new OrderAdapter(getContext(), allOrder));
+            adapter = new OrderAdapter(getContext(), allOrder);
+            rv_orders.setAdapter(adapter);
             rv_orders.setLayoutManager(new LinearLayoutManager(getContext()));
         }
 
@@ -125,7 +151,7 @@ public class OrderFragment extends Fragment {
         List<Order> wait = new ArrayList<>();
         for (Order order : orders) {
             if (order.getStatus().equals(getString(R.string.order_wait))) {
-                wait.add(new Order(order));
+                wait.add(order);
             }
         }
         return wait;
@@ -135,7 +161,7 @@ public class OrderFragment extends Fragment {
         List<Order> delivered = new ArrayList<>();
         for (Order order : orders) {
             if (order.getStatus().equals(getString(R.string.order_delivered))) {
-                delivered.add(new Order(order));
+                delivered.add(order);
             }
         }
         return delivered;
@@ -145,7 +171,7 @@ public class OrderFragment extends Fragment {
         List<Order> delivering = new ArrayList<>();
         for (Order order : orders) {
             if (order.getStatus().equals(getString(R.string.order_delivering))) {
-                delivering.add(new Order(order));
+                delivering.add(order);
             }
         }
         return delivering;
@@ -155,7 +181,7 @@ public class OrderFragment extends Fragment {
         List<Order> you_cancel = new ArrayList<>();
         for (Order order : orders) {
             if (order.getStatus().equals(getString(R.string.order_you_cancel))) {
-                you_cancel.add(new Order(order));
+                you_cancel.add(order);
             }
         }
         return you_cancel;
@@ -165,7 +191,7 @@ public class OrderFragment extends Fragment {
         List<Order> shop_cancel = new ArrayList<>();
         for (Order order : orders) {
             if (order.getStatus().equals(getString(R.string.order_shop_cancel))) {
-                shop_cancel.add(new Order(order));
+                shop_cancel.add(order);
             }
         }
         return shop_cancel;

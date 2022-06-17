@@ -6,69 +6,72 @@
     tools:context=".UserInfoActivity"
     android:padding="16dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
 
                 <ImageView
+                    android:id="@+id/iv_avatar"
                     android:layout_width="120dp"
                     android:layout_height="180dp"
-                    android:id="@+id/ib_avatar"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop" />
 
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp">
+                android:layout_marginStart="16dp"
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_gravity="center"
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:id="@+id/et_name"
                     android:text="Phan Trung Tín"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <LinearLayout
-                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:gravity="center_vertical">
 
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:background="@drawable/ic_gender"
-                        android:backgroundTint="@color/purple_500"/>
+                        android:backgroundTint="@color/purple_500" />
+
                     <Spinner
-                        android:layout_marginStart="8dp"
-                        android:textSize="14sp"
+                        android:id="@+id/sp_gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/sp_gender"/>
+                        android:layout_marginStart="8dp"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="8dp"
+                    android:layout_marginVertical="12dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:gravity="center_vertical"
                     android:weightSum="4">
 
@@ -76,29 +79,31 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:background="@drawable/ic_birthday_fill"
-                        android:backgroundTint="@color/primary_700"/>
+                        android:backgroundTint="@color/primary_700" />
+
                     <TextView
-                        android:layout_marginStart="8dp"
+                        android:id="@+id/tv_dob"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tv_dob"
-                        android:textSize="14sp"
-                        android:gravity="center"
-                        android:text="11/05/2001"/>
-                    <ImageButton
                         android:layout_marginStart="8dp"
+                        android:gravity="center"
+                        android:text="11/05/2001"
+                        android:textSize="14sp" />
+
+                    <ImageButton
+                        android:id="@+id/ib_choose_dob"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
+                        android:layout_marginStart="8dp"
                         android:background="@drawable/ic_calendar"
-                        android:backgroundTint="@color/primary_700"
-                        android:id="@+id/ib_choose_dob"/>
+                        android:backgroundTint="@color/primary_700" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:gravity="center_vertical">
 
                     <ImageView
@@ -106,57 +111,59 @@
                         android:layout_width="18dp"
                         android:layout_height="18dp"
                         android:background="@drawable/ic_phone_round"
-                        android:backgroundTint="@color/secondary_400"/>
-                    <TextView
-                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@color/secondary_400" />
+
+                    <EditText
+                        android:id="@+id/et_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tv_phone"
-                        android:textSize="14sp"
-                        android:text="0868754872"/>
+                        android:layout_marginStart="8dp"
+                        android:text="0868754872"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:gravity="center_vertical">
 
                     <ImageView
                         android:id="@+id/iv_google"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:background="@drawable/ic_google_round"/>
-                    <TextView
-                        android:layout_marginStart="8dp"
+                        android:background="@drawable/ic_google_round" />
+
+                    <EditText
+                        android:id="@+id/et_gmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tv_gmail"
-                        android:textSize="14sp"
-                        android:text="phantrungtin01@gmail.com"/>
+                        android:layout_marginStart="8dp"
+                        android:text="phantrungtin01@gmail.com"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:gravity="center_vertical">
 
                     <ImageView
                         android:id="@+id/iv_facebook"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:background="@drawable/ic_facebook_round"
-                        android:backgroundTint="@color/com_facebook_blue"/>
-                    <TextView
-                        android:layout_marginStart="8dp"
+                        android:background="@drawable/ic_facebook_round" />
+
+                    <EditText
+                        android:id="@+id/et_facebook"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tv_facebook"
-                        android:textSize="14sp"
-                        android:text="tin.phan.1105"/>
+                        android:layout_marginStart="8dp"
+                        android:text="tin.phan.1105"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -179,7 +186,7 @@
                 android:backgroundTint="@color/primary_900"/>
 
             <EditText
-                android:id="@+id/tv_address"
+                android:id="@+id/et_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"

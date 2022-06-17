@@ -4,21 +4,21 @@ import java.io.Serializable;
 
 /*OK*/
 public class Slider implements Serializable {
-    private byte[] image;
+    private int image;
 
     public Slider() {
 
     }
 
-    public Slider(byte[] image) {
+    public Slider(int image) {
         this.image = image;
     }
 
-    public byte[] getImage() {
+    public int getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(int image) {
         this.image = image;
     }
 }

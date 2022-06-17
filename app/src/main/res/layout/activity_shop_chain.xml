@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/iv_meal"
+        android:id="@+id/iv_shop_chain"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
@@ -15,7 +15,7 @@
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/iv_meal">
+        android:layout_below="@id/iv_shop_chain">
 
         <RelativeLayout
             android:layout_width="match_parent"

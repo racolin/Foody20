@@ -3,7 +3,6 @@ package hcmute.spkt.group20.foody_20.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,11 @@ import java.util.List;
 import hcmute.spkt.group20.foody_20.MealActivity;
 import hcmute.spkt.group20.foody_20.R;
 import hcmute.spkt.group20.foody_20.Support;
+import hcmute.spkt.group20.foody_20.dao.CommentDao;
+import hcmute.spkt.group20.foody_20.dao.ShopDao;
+import hcmute.spkt.group20.foody_20.model.Comment;
 import hcmute.spkt.group20.foody_20.model.Meal;
+import hcmute.spkt.group20.foody_20.model.Shop;
 
 public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealHolder> {
 
@@ -40,17 +43,27 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealHolder> {
 
     public void update(List<Meal> meals) {
         this.meals = meals;
-        Log.d("rrrmm", meals.get(meals.size() - 1).getName());
-        notifyItemInserted(meals.size() - 1);
+        notifyDataSetChanged();
     }
 
     @Override
     public void onBindViewHolder(@NonNull MealHolder holder, int position) {
-        holder.iv_meal.setImageBitmap(Support.convertBitmap(meals.get(position).getImage()));
+        Shop shop = ShopDao.getShopById(context, meals.get(position).getShop_id());
+        List<Comment> comments = CommentDao.getCommentsByMealId(context, meals.get(position).getId());
+        float rate = 0;
+        for (Comment comment : comments) {
+            rate += comment.getRate();
+        }
+        if (comments.size() > 0) {
+            rate /= comments.size();
+        } else {
+            rate = 5;
+        }
+        holder.iv_meal.setImageResource(meals.get(position).getImage());
         holder.tv_name.setText(meals.get(position).getName());
-        holder.tv_description.setText(meals.get(position).getDescription(35));
-        holder.tv_rated.setText(String.valueOf(meals.get(position).getRated()));
-        holder.tv_distance.setText(meals.get(position).getShop().getDistance());
+        holder.tv_description.setText(meals.get(position).getDescription());
+        holder.tv_rated.setText(String.valueOf((int) rate));
+        holder.tv_distance.setText(shop.getDistance());
 
         holder.itemView.setOnClickListener((View v) -> {
             Intent intent = new Intent(context, MealActivity.class);

@@ -139,9 +139,8 @@
     <string name="otp_not_format">Nhập OTP không đúng định dạng!</string>
 
     <string-array name="genders">
-        <item>Nam</item>
         <item>Nữ</item>
-        <item>Khác</item>
+        <item>Nam</item>
     </string-array>
 
     <string name="male">Nam</string>

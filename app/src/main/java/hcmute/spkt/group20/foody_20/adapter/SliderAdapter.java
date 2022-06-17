@@ -37,9 +37,7 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderHold
 
     @Override
     public void onBindViewHolder(@NonNull SliderHolder holder, int position) {
-        byte[] bytes = sliders.get(position).getImage();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        holder.iv_slider.setImageBitmap(bitmap);
+        holder.iv_slider.setImageResource(sliders.get(position).getImage());
     }
 
     @Override

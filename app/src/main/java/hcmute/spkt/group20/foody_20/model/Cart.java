@@ -1,58 +1,59 @@
 package hcmute.spkt.group20.foody_20.model;
 
-import com.google.firebase.firestore.Exclude;
+import android.content.Context;
 
 import java.io.Serializable;
 import java.util.List;
 
+import hcmute.spkt.group20.foody_20.dao.CartDao;
+
 /*OK*/
 
 public class Cart implements Serializable {
-    private Shop shop;//
-    private String shop_id;
-    private List<OrderItem> items;
+    private int id;
+    private int user_id;
+    private int shop_id;
 
-    public Cart(Shop shop, List<OrderItem> items) {
-        this.shop = shop;
-        this.items = items;
+    public Cart() {
+
     }
 
-    public int getTotal_price() {
-        if (items != null) {
-            int r = 0;
-            for (OrderItem item : items) {
-                r += item.getMeal().getPrice();
-            }
-            return r;
-        }
-        return 0;
-    }
-
-    public String getShop_id() {
-        return shop_id;
-    }
-
-    public void setShop_id(String shop_id) {
-//        load shop
+    public Cart(int id, int user_id, int shop_id) {
+        this.id = id;
+        this.user_id = user_id;
         this.shop_id = shop_id;
     }
 
-    @Exclude
-    public Shop getShop() {
-        return shop;
+    public int getId() {
+        return id;
     }
 
-    @Exclude
-    public void setShop(Shop shop) {
-        this.shop = shop;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public List<OrderItem> getItems() {
-        return items;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setItems(List<OrderItem> items) {
-        this.items = items;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public int getShop_id() {
+        return shop_id;
+    }
+
+    public void setShop_id(int shop_id) {
+        this.shop_id = shop_id;
+    }
+
+    public String toSaveString() {
+        return String.format("INSERT INTO cart VALUES(null, %d, %d)", user_id, shop_id);
+    }
+
+    public String toDeleteString() {
+        return String.format("DELETE FROM cart WHERE id=%d", id);
     }
 }
 

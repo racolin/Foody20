@@ -1,6 +1,5 @@
 package hcmute.spkt.group20.foody_20.model;
 
-import com.google.firebase.firestore.Exclude;
 
 public class RatingClass {
     private String type;
@@ -17,7 +16,6 @@ public class RatingClass {
         this.min = min;
     }
 
-    @Exclude
     public boolean isThisType(float rate) {
         return (rate > min) && (rate <= max);
     }

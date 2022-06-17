@@ -1,54 +1,33 @@
 package hcmute.spkt.group20.foody_20.model;
 
-import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 /*OK*/
 public class ShopChain implements Serializable {
+
+    private int id;
     private String name;
     private String description;
-    private List<Shop> shops; //
-    private List<String> shops_id;
-    private byte[] image;
-    private String image_src;
+    private int image;
 
     public ShopChain() {
 
     }
 
-    public ShopChain(String name, String description, List<Shop> shops, List<String> shops_id) {
+    public ShopChain(int id, String name, String description, int image) {
+        this.id = id;
         this.name = name;
         this.description = description;
-        this.shops = shops;
-        this.shops_id = shops_id;
-    }
-
-    @Exclude
-    public byte[] getImage() {
-        return image;
-    }
-
-    @Exclude
-    public void setImage(byte[] image) {
         this.image = image;
     }
 
-    public String getImage_src() {
-        return image_src;
+    public int getId() {
+        return id;
     }
 
-    public void setImage_src(String image_src) {
-        this.image_src = image_src;
-    }
-
-    public List<String> getShops_id() {
-        return shops_id;
-    }
-
-    public void setShops_id(List<String> shops_id) {
-        this.shops_id = shops_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -59,23 +38,6 @@ public class ShopChain implements Serializable {
         this.name = name;
     }
 
-    @Exclude
-    public float getRated() {
-        if (shops != null) {
-            int count = 0;
-            for (Shop shop : shops) {
-                count += shop.getRated();
-            }
-            return count / shops.size();
-        }
-        return 0;
-    }
-
-    @Exclude
-    public int getShop_count() {
-        return shops == null ? 0 :shops.size();
-    }
-
     public String getDescription() {
         return description;
     }
@@ -84,13 +46,11 @@ public class ShopChain implements Serializable {
         this.description = description;
     }
 
-    @Exclude
-    public List<Shop> getShops() {
-        return shops;
+    public int getImage() {
+        return image;
     }
 
-    @Exclude
-    public void setShops(List<Shop> shops) {
-        this.shops = shops;
+    public void setImage(int image) {
+        this.image = image;
     }
 }

@@ -2,191 +2,95 @@ package hcmute.spkt.group20.foody_20.model;
 
 /*OK*/
 
-import com.google.firebase.firestore.Exclude;
+import android.util.Log;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
+
+import hcmute.spkt.group20.foody_20.R;
+import hcmute.spkt.group20.foody_20.Support;
 
 public class User implements Serializable {
-    private String uid;
-    private String fullname;
-    private boolean gender;
-    private String DOB;
+
+    private int id;
+    private String full_name;
+    private int gender;
+    private Date dob;
     private String phone;
     private String gmail;
     private String facebook;
     private String address;
-
-    private List<Cart> carts; //
-    private List<String> carts_id;
-
-    private List<Order> orders; //
-    private List<String> orders_id;
-
-    private List<Discount> person_discounts;
-    private List<Notification> person_notification;
-
-    private List<Shop> shops_saved;//
-    private List<String> shops_saved_id;
-
-    private List<Meal> meals_saved;
-    private List<String> meals_saved_id; //
-
-    private String image_src;
-    private byte[] image;//
+    private String username;
+    private String password;
+    private int image;
 
     public User() {
-
+        this.id = -1;
+        this.full_name = "";
+        this.gender = 1;
+        this.dob = new Date();
+        this.phone = "";
+        this.gmail = "";
+        this.facebook = "";
+        this.address = "";
+        this.username = "";
+        this.password = "";
+        this.image = R.drawable.avatar_user_default;
     }
 
-    public User(String uid, String fullname, boolean gender, String DOB, String phone,
-                String gmail, String facebook, String address, List<Cart> carts,
-                List<String> carts_id, List<Order> orders, List<String> orders_id,
-                List<Discount> person_discounts, List<Notification> person_notification,
-                List<Shop> shops_saved, List<String> shops_saved_id, List<Meal> meals_saved,
-                List<String> meals_saved_id, String image_src, byte[] image) {
-        this.uid = uid;
-        this.fullname = fullname;
+    public User(int id, String full_name, int gender, Date dob, String phone,
+                String gmail, String facebook, String address, String username, String password, int image) {
+        this.id = id;
+        this.full_name = full_name;
         this.gender = gender;
-        this.DOB = DOB;
+        this.dob = dob;
         this.phone = phone;
         this.gmail = gmail;
         this.facebook = facebook;
         this.address = address;
-        this.carts = carts;
-        this.carts_id = carts_id;
-        this.orders = orders;
-        this.orders_id = orders_id;
-        this.person_discounts = person_discounts;
-        this.person_notification = person_notification;
-        this.shops_saved = shops_saved;
-        this.shops_saved_id = shops_saved_id;
-        this.meals_saved = meals_saved;
-        this.meals_saved_id = meals_saved_id;
-        this.image_src = image_src;
+        this.username = username;
+        this.password = password;
         this.image = image;
     }
 
-    @Exclude
-    public List<Cart> getCarts() {
-        return carts;
+    public String getUsername() {
+        return username;
     }
 
-    @Exclude
-    public void setCarts(List<Cart> carts) {
-        this.carts = carts;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public List<String> getCarts_id() {
-        return carts_id;
+    public int getId() {
+        return id;
     }
 
-    public void setCarts_id(List<String> carts_id) {
-        this.carts_id = carts_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    @Exclude
-    public List<Order> getOrders() {
-        return orders;
+    public String getFull_name() {
+        return full_name;
     }
 
-    @Exclude
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setFull_name(String full_name) {
+        this.full_name = full_name;
     }
 
-    public List<String> getOrders_id() {
-        return orders_id;
-    }
-
-    public void setOrders_id(List<String> orders_id) {
-        this.orders_id = orders_id;
-    }
-
-    public List<Discount> getPerson_discounts() {
-        return person_discounts;
-    }
-
-    public void setPerson_discounts(List<Discount> person_discounts) {
-        this.person_discounts = person_discounts;
-    }
-
-    public List<Notification> getPerson_notification() {
-        return person_notification;
-    }
-
-    public void setPerson_notification(List<Notification> person_notification) {
-        this.person_notification = person_notification;
-    }
-
-    @Exclude
-    public List<Shop> getShops_saved() {
-        return shops_saved;
-    }
-
-    @Exclude
-    public void setShops_saved(List<Shop> shops_saved) {
-        this.shops_saved = shops_saved;
-    }
-
-    public List<String> getShops_saved_id() {
-        return shops_saved_id;
-    }
-
-    public void setShops_saved_id(List<String> shops_saved_id) {
-//        Load shop
-        this.shops_saved_id = shops_saved_id;
-    }
-
-    @Exclude
-    public List<Meal> getMeals_saved() {
-        return meals_saved;
-    }
-
-    @Exclude
-    public void setMeals_saved(List<Meal> meals_saved) {
-        this.meals_saved = meals_saved;
-    }
-
-    public List<String> getMeals_saved_id() {
-        return meals_saved_id;
-    }
-
-    public void setMeals_saved_id(List<String> meals_saved_id) {
-//        loag meal
-        this.meals_saved_id = meals_saved_id;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
-    }
-
-    public boolean isGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
-    public String getDOB() {
-        return DOB;
+    public Date getDob() {
+        return dob;
     }
 
-    public void setDOB(String DOB) {
-        this.DOB = DOB;
+    public void setDob(Date dob) {
+        this.dob = dob;
     }
 
     public String getPhone() {
@@ -221,21 +125,32 @@ public class User implements Serializable {
         this.address = address;
     }
 
-    public String getImage_src() {
-        return image_src;
+    public String getPassword() {
+        return password;
     }
 
-    public void setImage_src(String image_src) {
-        this.image_src = image_src;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    @Exclude
-    public byte[] getImage() {
+    public int getImage() {
         return image;
     }
 
-    @Exclude
-    public void setImage(byte[] image) {
+    public void setImage(int image) {
         this.image = image;
+    }
+
+    public String toSaveString() {
+        return String.format("INSERT INTO user VALUES(null, '%s', %d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d)",
+                full_name, gender, Support.toDateString(dob, "yyyy-MM-dd HH:mm:ss"),
+                phone, gmail, facebook, address, username, password, image);
+    }
+
+    public String toUpdateString() {
+        return String.format("UPDATE user SET full_name='%s', gender=%d, dob='%s', phone='%s', " +
+                        "gmail='%s', facebook='%s', address='%s', username='%s', password='%s', image=%d WHERE id=%d",
+                full_name, gender, Support.toDateString(dob, "yyyy-MM-dd HH:mm:ss"),
+                phone, gmail, facebook, address, username, password, image, id);
     }
 }

@@ -1,67 +1,57 @@
 package hcmute.spkt.group20.foody_20.model;
 
-import com.google.firebase.firestore.Exclude;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-/*OK*/
+import hcmute.spkt.group20.foody_20.Support;
 
 public class Order implements Serializable {
-    private String code;//
-    private String shop_name;//
-    private Date time_end;
+
+    private int id;
+    private int user_id;
+    private int shop_id;
     private Date time_start;
-    private int price;
+    private Date time_end;
     private String status;
     private String cause;
-    List<OrderItem> order_items;
 
     public Order() {
 
     }
 
-    public Order(Order order) {
-        this.code = order.code;
-        this.shop_name = order.shop_name;
-        this.time_end = order.time_end;
-        this.time_start = order.time_start;
-        this.price = order.price;
-        this.status = order.status;
-        this.cause = order.cause;
-        this.order_items = order.order_items;
-    }
-
-    public Order(String shop_name, Date time_end, Date time_start, int price,
-                 String status, String cause, List<OrderItem> order_items) {
-        this.shop_name = shop_name;
-        this.time_end = time_end;
+    public Order(int id, int user_id, int shop_id, Date time_start, Date time_end, String status, String cause) {
+        this.id = id;
+        this.user_id = user_id;
+        this.shop_id = shop_id;
         this.time_start = time_start;
-        this.price = price;
+        this.time_end = time_end;
         this.status = status;
         this.cause = cause;
-        this.order_items = order_items;
     }
 
-    @Exclude
-    public String getShop_name() {
-        return shop_name;
+    public int getId() {
+        return id;
     }
 
-    @Exclude
-    public void setShop_name(String shop_name) {
-        this.shop_name = shop_name;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    @Exclude
-    public String getCode() {
-        return code;
+    public int getUser_id() {
+        return user_id;
     }
 
-    @Exclude
-    public void setCode(String code) {
-        this.code = code;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public int getShop_id() {
+        return shop_id;
+    }
+
+    public void setShop_id(int shop_id) {
+        this.shop_id = shop_id;
     }
 
     public Date getTime_end() {
@@ -80,14 +70,6 @@ public class Order implements Serializable {
         this.time_start = time_start;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -104,11 +86,15 @@ public class Order implements Serializable {
         this.cause = cause;
     }
 
-    public List<OrderItem> getOrder_items() {
-        return order_items;
+    public String toSaveString() {
+        return String.format("INSERT INTO `order` VALUES(null, %d, %d, '%s', '%s', '%s', '%s')", user_id, shop_id,
+                Support.toDateString(time_start, "yyyy-MM-dd HH:mm:ss"),
+                Support.toDateString(time_end, "yyyy-MM-dd HH:mm:ss"),
+                status, cause);
     }
 
-    public void setOrder_items(List<OrderItem> order_items) {
-        this.order_items = order_items;
+    public String toUpdateString() {
+        return String.format("UPDATE `order` SET status='%s', cause='%s' WHERE id=%d",
+                status, cause, id);
     }
 }
